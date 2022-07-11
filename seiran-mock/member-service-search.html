@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keyword" content="">
+  <title>ハートID 管理システム</title>
+  <!-- Theme icon -->
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
+  <!-- Sweet Alert css -->
+  <link href="assets/plugins/sweet-alert/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+  <!-- Responsive and DataTables -->
+  <link href="assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/morris-chart/morris.css" rel="stylesheet">
+  <!-- Theme Css -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/slidebars.min.css" rel="stylesheet">
+  <link href="assets/css/icons.css" rel="stylesheet">
+  <link href="assets/css/menu.css" rel="stylesheet" type="text/css">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body class="sticky-header">
+  <section>
+    <!-- sidebar left start-->
+    <div class="sidebar-left">
+      <div class="sidebar-left-info">
+        <!--sidebar nav start-->
+        <ul class="side-navigation">
+
+          <li class="text-center">
+            <a href="member-search.html"><i class="mdi mdi-account-search" style="font-size: 40px;"></i><div>ユーザ検索</div></a>
+          </li>
+
+          <li class="text-center">
+            <a href="unchecked-regist.html"><i class="mdi mdi-account-off" style="font-size: 40px;"></i><div>未チェック登録者</div></a>
+          </li>
+          <li class="text-center">
+            <a href="ic-card-page.html"><i class="mdi mdi-account-card-details"></i><div>ICカード読み取り</div></a>
+          </li>
+          <li class="active text-center">
+            <a href="member-service-search.html"><i class="ti-search"></i><div>サービス別利用者</div></a>
+          </li>
+          <li class="text-center">
+            <a href="device-management.html"><i class="ti-desktop"></i><div>端末管理</div></a>
+          </li>
+          <li class="text-center">
+            <a href="user-service-management.html"><i class=" mdi mdi-account-settings-variant" style="font-size: 40px;"></i><div>利用サービス管理</div></a>
+          </li>
+          <li class="text-center">
+            <a href="permission-setting.html"><i class="mdi mdi-account-key" style="font-size: 40px;"></i><div>権限設定</div></a>
+          </li>
+        </ul>
+        <!--sidebar nav end-->
+      </div>
+    </div>
+    <!-- sidebar left end-->
+    <!-- body content start-->
+    <div class="body-content">
+      <!-- header section start-->
+      <div class="header-section">
+        <!--logo and logo icon start-->
+        <div class="logo">
+          <a href="index.html">
+            <span class="logo-img"><img src="assets/images/logo_sm.png" alt="" height="26"></span>
+            <!--<i class="fa fa-maxcdn"></i>-->
+            <span class="brand-name">ハートID</span>
+          </a>
+        </div>
+        <!--toggle button start-->
+        <a class="toggle-btn"><i class="ti ti-menu"></i></a>
+        <!--toggle button end-->
+        <!--mega menu start-->
+        <div id="navbar-collapse-1" class="navbar-collapse collapse mega-menu">
+          <ul class="nav navbar-nav">
+            <!-- Classic dropdown -->
+            <!-- Classic list -->
+          </ul>
+        </div>
+        <!--mega menu end-->
+        <div class="notification-wrap">
+          <!--right notification start-->
+          <div class="right-notification">
+            <ul class="notification-menu">
+              <li>
+                <button type="button" class="btn mdi btn-danger">カードリーダーを接続</button>
+              </li>
+              <li>
+                <div class="d-flex align-items-center ml-4">
+                  <div class="people_name">山田　太郎（職員）</div>
+                  <a href="javascript:;" data-toggle="dropdown">
+                    <i class="mdi mdi-settings m-r-5 text-muted"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right profile-menu">
+                    <a class="dropdown-item" href="#"><i class="mdi mdi-logout m-r-5 text-muted"></i> ログアウト</a>
+                  </div>
+                </div>
+
+              </li>
+            </ul>
+          </div>
+          <!--right notification end-->
+        </div>
+      </div>
+      <!-- header section end-->
+      <div class="container-fluid">
+        <div class="page-head">
+          <h4 class="mt-2 mb-2">サービス別利用者</h4>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card m-b-30">
+              <div class="card-body">
+                <div class="row dataTables_wrapper">
+                  <div class="col-sm-12 col-md-6">
+                    <h6 class="mb-2 mt-2">利用サービス</h6>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <div id="datatable_filter" class="dataTables_filter">
+                      <label>検索:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="datatable"><a href="#">クリア</a></label>
+                    </div>
+                  </div>
+                </div>
+                <form class="" action="">
+                  <div class="row">
+                    <div class="tab-1 m-b-30 col-lg-12">
+                      <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                          <a class="nav-link active show" href="#tab01" data-toggle="tab" aria-expanded="false">医療</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#tab02" data-toggle="tab" aria-expanded="false">在宅支援</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#tab03" data-toggle="tab" aria-expanded="false">介護</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#tab04" data-toggle="tab" aria-expanded="false">子育て</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#tab05" data-toggle="tab" aria-expanded="false">障がい</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#tab06" data-toggle="tab" aria-expanded="false">教育</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#tab07" data-toggle="tab" aria-expanded="false">ダミー項目</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#tab08" data-toggle="tab" aria-expanded="false">ダミー項目</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#tab09" data-toggle="tab" aria-expanded="false">ダミー項目</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#tab10" data-toggle="tab" aria-expanded="false">ダミー項目</a>
+                        </li>
+                      </ul>
+                      <div class="tab-content bg-white">
+                        <div class="tab-pane p-4 active show" id="tab01">
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>医療A</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>医療B</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>医療C</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>医療D</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>医療E</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>医療F</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>医療G</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>医療H</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>医療I</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>医療J</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tab-pane p-4" id="tab02">
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>在宅支援A</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>在宅支援B</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>在宅支援C</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>在宅支援D</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>在宅支援E</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>在宅支援F</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>在宅支援G</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>在宅支援H</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>在宅支援I</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>在宅支援J</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tab-pane p-4" id="tab03">
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>介護A</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>介護B</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>介護C</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>介護D</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>介護E</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>介護F</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>介護G</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>介護H</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>介護I</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>介護J</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tab-pane p-4" id="tab04">
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>子育てA</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>子育てB</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>子育てC</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>子育てD</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>子育てE</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>子育てF</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>子育てG</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>子育てH</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>子育てI</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>子育てJ</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tab-pane p-4" id="tab05">
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>障がいA</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>障がいB</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>障がいC</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>障がいD</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>障がいE</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>障がいF</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>障がいG</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>障がいH</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>障がいI</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>障がいJ</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tab-pane p-4" id="tab06">
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>教育A</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>教育B</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>教育C</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>教育D</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>教育E</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>教育F</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>教育G</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>教育H</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>教育I</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>教育J</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tab-pane p-4" id="tab07">
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目A</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目B</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目C</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目D</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目E</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目F</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目G</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目H</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目I</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目J</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tab-pane p-4" id="tab08">
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目A</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目B</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目C</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目D</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目E</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目F</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目G</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目H</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目I</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目J</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tab-pane p-4" id="tab09">
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目A</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目B</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目C</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目D</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目E</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目F</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目G</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目H</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目I</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目J</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tab-pane p-4" id="tab10">
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目A</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目B</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目C</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目D</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目E</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目F</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目G</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目H</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目I</label>
+                            </div>
+                            <div class="col-lg-2 checkbox my-2">
+                              <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目J</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group mb-0 mt-3">
+                    <div>
+                      <button type="submit" class="btn btn-info waves-effect waves-light">
+												検索
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- user deatails table -->
+        <div class="data-table">
+          <div class="row">
+            <div class="col-lg-12 col-sm-12">
+              <div class="card m-b-30">
+                <div class="card-body table-responsive">
+                  <h5 class="header-title mb-3">保育園Aユーザ一覧</h5>
+                  <div class="table-odd">
+                    <div id="datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <table id="datatable" class="table table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                            <thead>
+                              <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">ハートID</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">名前</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">フリガナ</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">性別</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">生年月日</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">メールアドレス</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">電話番号</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">詳細</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr role="row" class="odd">
+                                <td class="sorting_1">000012345</td>
+                                <td>山田　太郎</td>
+                                <td>やまだ たろう</td>
+                                <td>男性</td>
+                                <td>1976/5/12 (45歳)</td>
+                                <td>heartid0003@co.jp</td>
+                                <td>090-0000-0000</td>
+                                <td>
+                                  <a href="#" data-toggle="modal" data-target=".user_info_modal">詳細</a>
+                                  <div class="user_info_modal modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"></div>
+                                </td>
+                              </tr>
+                              <tr role="row " class="even ">
+                                <td class="sorting_1 ">000012345</td>
+                                <td>山田　太郎</td>
+                                <td>やまだ たろう</td>
+                                <td>男性</td>
+                                <td>1976/5/12 (45歳)</td>
+                                <td>heartid0003@co.jp</td>
+                                <td>090-0000-0000</td>
+                                <td>
+                                  <a href="#" data-toggle="modal" data-target=".user_info_modal">詳細</a>
+                                  <div class="user_info_modal modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"></div>
+
+                                </td>
+                              </tr>
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end row-->
+
+        </div>
+      </div>
+
+
+
+
+      <!--end container-->
+
+      <!--footer section start-->
+      <footer class="footer ">
+        2022 &copy; ハートID
+      </footer>
+      <!--footer section end-->
+
+
+      <!-- Right Slidebar start -->
+
+      <!--end Right Slidebar-->
+    </div>
+    <!--end body content-->
+  </section>
+
+  <!-- jQuery -->
+  <script src="assets/js/jquery-3.2.1.min.js "></script>
+  <script src="assets/js/popper.min.js "></script>
+  <script src="assets/js/bootstrap.min.js "></script>
+  <script src="assets/js/jquery-migrate.js "></script>
+  <script src="assets/js/modernizr.min.js "></script>
+  <script src="assets/js/jquery.slimscroll.min.js "></script>
+  <script src="assets/js/slidebars.min.js "></script>
+
+  <!-- Parsley js -->
+  <script type="text/javascript " src="assets/plugins/parsleyjs/dist/parsley.min.js "></script>
+
+  <script type="text/javascript ">
+    $(document).ready(function() {
+      $('form').parsley();
+    });
+  </script>
+
+
+
+  <!-- Responsive and datatable js -->
+  <script src="assets/plugins/datatables/jquery.dataTables.min.js "></script>
+  <script src="assets/plugins/datatables/dataTables.bootstrap4.min.js "></script>
+  <script src="assets/plugins/datatables/dataTables.responsive.min.js "></script>
+  <script src="assets/plugins/datatables/responsive.bootstrap4.min.js "></script>
+
+  <!--app js-->
+  <script src="assets/js/jquery.app.js "></script>
+  <!-- Sweet Alert Js  -->
+  <script src="assets/plugins/sweet-alert/sweetalert2.min.js "></script>
+  <script src="assets/pages/jquery.sweet-alert.init.js "></script>
+  <script type="text/javascript ">
+    $(document).ready(function() {
+      $('#datatable').DataTable(),
+        $('#datatable2').DataTable();
+    });
+  </script>
+</body>
+
+</html>

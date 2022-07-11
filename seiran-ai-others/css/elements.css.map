@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../assets/plugins/summernote/less/elements.scss"
+    ],
+    "names": [],
+    "file": "elements.css"
+}

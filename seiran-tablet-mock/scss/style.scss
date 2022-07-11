@@ -1,0 +1,324 @@
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -msbox-sizing: border-box;
+}
+
+body,
+html {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+html {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  width: 1920px;
+  height: 1080px;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 500;
+  position: relative;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+ul,
+li {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+
+.flex {
+  display: -moz-flex;
+  display: flex;
+}
+
+img {
+  display: block;
+}
+
+.img_wrap img {
+  width: 100%;
+}
+
+
+/* A オープニング css ----------------------*/
+
+.home_btn {
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
+  z-index: 999;
+}
+
+.home_btn:hover {
+  transform: translateY(10px);
+  transition: 0.2s all;
+}
+
+
+/* B コンテンツ一覧画面 css --------------------------*/
+
+.top_page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: url(../img/b_contents_bg.png) no-repeat;
+  background-size: 100% 100%;
+  .left_img {
+    .bottom_img {
+      .balloon {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 50px;
+        width: 400px;
+      }
+    }
+  }
+  .card_img {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+  }
+  .place {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    font-size: 32px;
+    color: #FF0000;
+    &::before {
+      position: fixed;
+      width: 250px;
+      height: 200px;
+      content: '';
+      background: url(../img/b_right_bottom.png) no-repeat;
+      background-size: 100% 100%;
+      right: 0px;
+      bottom: 0px;
+      z-index: -99;
+    }
+  }
+}
+
+.success_page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: url(../img/b_contents_bg.png) no-repeat;
+  background-size: 100% 100%;
+  .left_img {
+    .bottom_img {
+      .balloon {
+        position: fixed;
+        width: 450px;
+        bottom: 90px;
+        left: 230px;
+      }
+    }
+  }
+  .card_img {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    width: 200px;
+    z-index: 99;
+  }
+  .success_msg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 24px;
+    line-height: 2;
+    .name {
+      font-size: 32px;
+      color: #FF0000;
+    }
+    &::before {
+      position: fixed;
+      width: 450px;
+      height: 240px;
+      content: '';
+      background: url(../img/success_pop_up.png) no-repeat;
+      background-size: 100% 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -99;
+    }
+  }
+  .news {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    font-size: 16px;
+  }
+}
+
+.fail_page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: url(../img/b_contents_bg.png) no-repeat;
+  background-size: 100% 100%;
+  .left_img {
+    .bottom_img {
+      .balloon {
+        position: fixed;
+        width: 450px;
+        bottom: 90px;
+        left: 230px;
+      }
+    }
+  }
+  .card_img {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    width: 200px;
+    z-index: 99;
+  }
+  .success_msg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 18px;
+    line-height: 2;
+    .contact {
+      color: #FF0000;
+    }
+    &::before {
+      position: fixed;
+      width: 380px;
+      height: 150px;
+      content: '';
+      background: url(../img/fail_pop_up.png) no-repeat;
+      background-size: 100% 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -99;
+    }
+  }
+  .news {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    font-size: 16px;
+  }
+}
+
+.maintenance_page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: url(../img/b_contents_bg.png) no-repeat;
+  background-size: 100% 100%;
+  .form_section {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 12px;
+    width: 400px;
+    padding: 40px 40px;
+    color: #666;
+    font-size: 16px;
+    .logo img {
+      width: 100px;
+      margin: 0 auto;
+    }
+    .title {
+      font-size: 24px;
+      text-align: center;
+      padding: 20px 0px;
+    }
+    .form_group {
+      .form_label {
+        padding-bottom: 6px;
+      }
+      input {
+        width: 100%;
+        padding: 6px 12px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+      }
+    }
+    .setting_btn_wrap {
+      text-align: right;
+      padding-top: 20px;
+      .setting_btn {
+        border: none;
+        background-color: #007FFF;
+        color: #fff;
+        border-radius: 60px;
+        padding: 6px 20px;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+    .card_reader_connection_status {
+      padding: 30px 0px;
+      font-size: 18px;
+      text-align: center;
+      .red_text {
+        color: #fe6400;
+      }
+    }
+    .card_reader_btn_wrap {
+      .card_reader_btn {
+        width: 100%;
+        background-color: #fe6400;
+        color: #fff;
+        text-align: center;
+        border: none;
+        border-radius: 60px;
+        padding: 6px 20px;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}

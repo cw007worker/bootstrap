@@ -1,0 +1,150 @@
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title user_info_block">ユーザー情報</h5>
+      <h5 class="modal-title billing_info_block">請求情報の登録</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="">&times;</span></button>
+    </div>
+    <div class="modal-body">
+      <div class="col-md-12 user_info_block">
+        <div class="presonal-information">
+          <div class="row">
+            <div class="col-lg-6"><b>ハートID</b>0000012345</div>
+          </div>
+          <hr>
+          <h6 class="user_info_sub_title">請求内容の詳細</h6>
+          <div class="row">
+            <div class="col-lg-6">
+              <div><b>請求ID</b>123456789</div>
+              <div><b>請求日</b>2022/3/25</div>
+              <div><b>利用施設</b>A施設</div>
+            </div>
+            <div class="col-lg-6">
+              <div><b>金額</b>5300円</div>
+              <div><b>ステータス</b>未入金</div>
+              <div><b>入金反映日</b>-</div>
+            </div>
+          </div>
+          <hr>
+          <h6 class="user_info_sub_title">請求情報</h6>
+          <div class="row">
+            <div class="col-lg-6">
+              <div><b>支払い方法</b>銀行振替</div>
+              <div><b>請求先</b>連絡先2</div>
+              <div><b>請求宛名</b>山田花子</div>
+            </div>
+            <div class="col-lg-6">
+              <div><b>口座振替状況</b>設定完了</div>
+              <div><b>月遅れ振替</b>設定しない</div>
+              <div><b>最終入金反映日</b>2022/7/25</div>
+              <div><b>未払い</b>あり</div>
+            </div>
+          </div>
+          <hr>
+          <h6 class="user_info_sub_title">基本情報</h6>
+          <div class="row">
+            <div class="col-lg-6">
+              <div><b>名前</b>山田太郎</div>
+              <div><b>フリガナ</b>やまだたろう</div>
+              <div><b>旧姓</b>山本（やまもと）</div>
+              <div><b>ローマ字表記</b>Taro Yamada</div>
+            </div>
+            <div class="col-lg-6">
+              <div><b>生年月日</b>2000/1/11</div>
+              <div><b>性別</b>男性</div>
+              <div><b>携帯電話</b>090-0000-0000</div>
+              <div><b>メールアドレス</b>heartid0003@co.jp</div>
+            </div>
+          </div>
+          <hr>
+          <a class="read_more_btn" href="#">それ以外の項目も表示する</a>
+          <div id="read_more">
+            <hr>
+            <div class="row">
+              <div class="col-lg-6">
+                <h6 class="user_info_sub_title">連絡先</h6>
+                <div><b>郵便番号</b>332-0006</div>
+                <div><b>都道府県</b>東京都</div>
+                <div><b>電話番号</b>090-0000-0000</div>
+                <div><b>住所</b>埼玉県川口市末広</div>
+                <div><b>備考</b>備考</div>
+              </div>
+              <div class="col-lg-6">
+                <h6 class="user_info_sub_title">連絡先2</h6>
+                <div><b>郵便番号</b>332-0006</div>
+                <div><b>都道府県</b>東京都</div>
+                <div><b>電話番号</b>090-0000-0000</div>
+                <div><b>住所</b>埼玉県川口市末広</div>
+                <div><b>備考</b>備考</div>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-lg-6">
+                <h6 class="user_info_sub_title">連絡先3</h6>
+                <div><b>郵便番号</b>332-0006</div>
+                <div><b>都道府県</b>東京都</div>
+                <div><b>電話番号</b>090-0000-0000</div>
+                <div><b>住所</b>埼玉県川口市末広</div>
+                <div><b>備考</b>備考</div>
+              </div>
+              <div class="col-lg-6">
+                <h6 class="user_info_sub_title">その他</h6>
+                <div><b>医療保険</b>医療保険</div>
+                <div><b>介護保険</b>介護保険</div>
+                <div><b>wiseman介護のID</b>12345</div>
+                <div><b>死亡日</b>2022/1/20</div>
+                <div><b>備考</b>備考</div>
+                <div><b>ICカード</b>登録済み</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-footer justify-content-between">
+      <div class="button_list  user_info_block">
+        <button type="button" data-toggle="modal" data-target=".finished_checked" class="btn btn-info update_modal_btn">入金済みにする</button>
+
+      </div>
+      <div class="button_list  user_info_block">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<div class="modal fade finished_checked sub_modal" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close sub_modal_close">
+									<span aria-hidden="true">×</span>
+							</button>
+      </div>
+      <div class="modal-body ">
+        <p>入金済みにしますがよろしいですか？</p>
+      </div>
+      <div class="modal-footer ">
+        <button type="button " class="btn btn-primary sub_modal_close">OK</button>
+        <button type="button " class="btn btn-secondary sub_modal_close">キャンセル</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="assets/plugins/sweet-alert/sweetalert2.min.js "></script>
+<script src="assets/pages/jquery.sweet-alert.init.js "></script>
+
+<script>
+  $(document).ready(function() {
+    $("#read_more").hide();
+    $('.read_more_btn').click(function() {
+      $("#read_more").fadeToggle();
+    });
+    $('.sub_modal_close').click(function() {
+      $('.sub_modal').modal("hide");
+    });
+  });
+</script>

@@ -1,0 +1,2144 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keyword" content="">
+  <title>リハビリメニュー管理</title>
+  <!-- Theme icon -->
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
+  <!-- Responsive and DataTables -->
+  <link href="assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/morris-chart/morris.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+  <!-- Sweet Alert css -->
+  <link href="assets/plugins/sweet-alert/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/dropify/css/dropify.min.css" rel="stylesheet">
+  <!-- Theme Css -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/slidebars.min.css" rel="stylesheet">
+  <link href="assets/css/icons.css" rel="stylesheet">
+  <link href="assets/css/menu.css" rel="stylesheet" type="text/css">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body class="sticky-header">
+  <section>
+    <!-- sidebar left start-->
+    <!-- sidebar left end-->
+    <!-- body content start-->
+    <div class="body-content no-sidebar">
+      <!-- header section start-->
+      <div class="header-section">
+        <!--logo and logo icon start-->
+        <div class="logo">
+          <a href="index.html">
+            <span class="logo-img"><img src="assets/images/logo_sm.png" alt="" height="26"></span>
+            <!--<i class="fa fa-maxcdn"></i>-->
+            <span class="brand-name">リハビリメニュー管理</span>
+          </a>
+        </div>
+        <!--toggle button start-->
+        <!--toggle button end-->
+        <!--mega menu start-->
+        <div id="navbar-collapse-1" class="navbar-collapse collapse mega-menu">
+          <ul class="nav navbar-nav">
+            <!-- Classic dropdown -->
+            <li class="facility_text">
+              対象施設名：
+            </li>
+            <li class="dropdown">
+              <a href="javascript:;" data-toggle="dropdown" class="" aria-expanded="false"> 未選択 <i class="mdi mdi-chevron-down"></i> </a>
+              <ul role="menu" class="dropdown-menu language-switch" x-placement="bottom-start">
+                <li>
+                  <a href="javascript:;"> リハビリ施設A </a>
+                </li>
+                <li>
+                  <a href="javascript:;"> リハビリ施設B </a>
+                </li>
+                <li>
+                  <a href="javascript:;"> リハビリ施設C </a>
+                </li>
+                <li>
+                  <a href="javascript:;"> リハビリ施設D </a>
+                </li>
+                <li>
+                  <a href="javascript:;"> リハビリ施設E </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!--mega menu end-->
+        <div class="notification-wrap">
+          <!--right notification start-->
+          <div class="right-notification">
+            <ul class="notification-menu">
+              <li>
+                <div class="d-flex align-items-center ml-4">
+                  <div class="people_name">山田　太郎（職員）</div>
+                  <a href="javascript:;" data-toggle="dropdown">
+                    <i class="mdi mdi-settings m-r-5 text-muted"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right profile-menu">
+                    <a class="dropdown-item" href="#"><i class="mdi mdi-logout m-r-5 text-muted"></i> ログアウト</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!--right notification end-->
+        </div>
+      </div>
+      <!-- header section end-->
+      <div class="container-fluid">
+        <div class="page-head row">
+          <div class="col-sm-12 col-md-6">
+            <h4 class="mt-2 mb-2">効果測定新規登録　山田 太郎様（00012345）</h4>
+          </div>
+          <div class="col-sm-12 col-md-6 new_invoice_btn_wrap">
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target=".close_alert_modal">このウィンドウを閉じる</button>
+          </div>
+          <div class="modal fade close_alert_modal" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  <p>このウィンドウを閉じますがよろしいですか？（保存していない内容は破棄されます）</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" onclick="window.close();">OK</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3 class="text-muted pl-3 mt-3 mb-3 text-center">評価項目</h3>
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <div class="card m-b-30">
+              <div class="card-body">
+                <form class="" action="#">
+                  <div class="row">
+                    <div class="col-lg-3">
+                      基本情報
+                    </div>
+                    <div class="form-group col-lg-3">
+                      <label>身長<span class="star">*</span></label><span class="required">必須</span>
+                      <div class="d-flex align-items-center">
+                        <input type="text" class="form-control" placeholder="身長" />
+                        <div class="unit">&nbsp;cm</div>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-3">
+                      <label>体重<span class="star">*</span></label><span class="required">必須</span>
+                      <div class="d-flex align-items-center">
+                        <input type="text" class="form-control" placeholder="体重" />
+                        <div class="unit">&nbsp;kg</div>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-3">
+                      <label>計測日<span class="star">*</span></label><span class="required">必須</span>
+                      <div class="d-flex align-items-center">
+                        <input type="text" id="datepicker01" name="datepicker01" placeholder="日付を選択してください" class="form-control" />
+                        <a href="javascript:void(0)" class="today_link ml-2" id="datepicker01_btn">本日</a>
+                      </div>
+                    </div>
+                  </div>
+                  <hr class="evaluation_hr">
+
+                  <div class="row">
+                    <div class="col-lg-3">
+                      握力
+                    </div>
+                    <div class="form-group col-lg-3">
+                      <label>左<span class="star">*</span></label><span class="required">必須</span>
+                      <div class="d-flex align-items-center">
+                        <input type="text" class="form-control" placeholder="左" />
+                        <div class="unit">&nbsp;kg</div>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-3">
+                      <label>右<span class="star">*</span></label><span class="required">必須</span>
+                      <div class="d-flex align-items-center">
+                        <input type="text" class="form-control" placeholder="右" />
+                        <div class="unit">&nbsp;kg</div>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-3">
+                      <label>計測日<span class="star">*</span></label><span class="required">必須</span>
+                      <div class="d-flex align-items-center">
+                        <input type="text" id="datepicker02" name="datepicker02" placeholder="日付を選択してください" class="form-control" />
+                        <a href="javascript:void(0)" class="today_link ml-2" id="datepicker02_btn">本日</a>
+                      </div>
+                    </div>
+                  </div>
+                  <hr class="evaluation_hr">
+                  <div class="row">
+                    <div class="col-lg-3">
+                      10m歩行
+                    </div>
+                    <div class="form-group col-lg-3">
+                      <label>時間<span class="star">*</span></label><span class="required" placeholder="秒">必須</span>
+                      <div class="d-flex align-items-center">
+                        <input type="text" class="form-control" />
+                        <div class="unit">&nbsp;秒</div>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-3 mt-4 pt-1">
+                      <div class="form-check-inline my-1">
+                        <label class="cr-styled" for="walk_radio1">
+                        <input type="radio" id="walk_radio1" name="walk-radios" > 
+                          <i class="fa"></i>杖</label>
+                      </div>
+                      <div class="form-check-inline my-1">
+                        <label class="cr-styled" for="walk_radio2">
+                        <input type="radio" id="walk_radio2" name="walk-radios" > 
+                          <i class="fa"></i>歩行器</label>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-3">
+                      <label>計測日<span class="star">*</span></label><span class="required">必須</span>
+                      <div class="d-flex align-items-center">
+                        <input type="text" id="datepicker03" name="datepicker03" placeholder="日付を選択してください" class="form-control" />
+                        <a href="javascript:void(0)" class="today_link ml-2" id="datepicker03_btn">本日</a>
+                      </div>
+                    </div>
+                  </div>
+                  <hr class="evaluation_hr">
+                  <div class="row">
+                    <div class="col-lg-3">
+                      Time Up and Go（TUG）
+                    </div>
+                    <div class="form-group col-lg-3">
+                      <label>時間<span class="star">*</span></label><span class="required" placeholder="秒">必須</span>
+                      <div class="d-flex align-items-center">
+                        <input type="text" class="form-control" />
+                        <div class="unit">&nbsp;秒</div>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-3 mt-4 pt-1">
+                      <div class="form-check-inline my-1">
+                        <label class="cr-styled" for="walk1_radio1">
+                        <input type="radio" id="walk1_radio1" name="walk-radios2" > 
+                          <i class="fa"></i>杖</label>
+                      </div>
+                      <div class="form-check-inline my-1">
+                        <label class="cr-styled" for="walk1_radio2">
+                        <input type="radio" id="walk1_radio2" name="walk-radios2" > 
+                          <i class="fa"></i>歩行器</label>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-3">
+                      <label>計測日<span class="star">*</span></label><span class="required">必須</span>
+                      <div class="d-flex align-items-center">
+                        <input type="text" id="datepicker04" name="datepicker04" placeholder="日付を選択してください" class="form-control" />
+                        <a href="javascript:void(0)" class="today_link ml-2" id="datepicker04_btn">本日</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group mb-0 mt-3">
+                    <div>
+                      <button type="submit" class="btn btn-info waves-effect waves-light">登録</button>
+                      <button type="reset" class="btn btn-secondary waves-effect m-l-5">キャンセル</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- end col -->
+        </div>
+        <h3 class="text-muted pl-3 mt-3 mb-3 text-center">MMSE</h3>
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <div class="card m-b-30">
+              <div class="card-body">
+                <div class="row">
+                  <div class="form-group col-lg-3">
+                    <label>点数</label>
+                    <div class="d-flex align-items-center">
+                      <input type="text" class="form-control" id="mmse_value" value="0" />
+                      <div class="unit">&nbsp;点</div>
+                    </div>
+                  </div>
+                  <div class="form-group col-lg-3">
+                    <label>計測日<span class="star">*</span></label><span class="required">必須</span>
+                    <div class="d-flex align-items-center">
+                      <input type="text" id="datepicker06" name="datepicker06" placeholder="日付を選択してください" class="form-control" />
+                      <a href="javascript:void(0)" class="today_link ml-2" id="datepicker06_btn">本日</a>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-2">
+                    食事
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="food_radio1">
+                          <input type="radio" id="food_radio1" name="food_radio" value="10"> 
+                            <i class="fa"></i>10点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">自立、手の届くところに食べ物を置けば、トレイあるいはテーブルから１人で摂食可能。<br>必要なら介助器具をつけることができ、適切な時間内に食事が終わる。</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="food_radio2">
+                          <input type="radio" id="food_radio2" name="food_radio" value="5"> 
+                            <i class="fa"></i>5点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">食べ物を切る等、介助が必要。</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="food_radio3">
+                          <input type="radio" id="food_radio3" name="food_radio" value="0" checked> 
+                            <i class="fa"></i>0点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">全介助</div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2">
+                    移乗
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="transfer_radio1">
+                          <input type="radio" id="transfer_radio1" name="transfer_radio" value="15"> 
+                            <i class="fa"></i>15点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">自立、車椅子で安全にベッドに近づき、ブレーキをかけ、フットレストを上げてベッドに移り、臥位になる。<br>再び起きて車椅子を適切な位置において、腰掛ける動作がすべて自立。</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="transfer_radio2">
+                          <input type="radio" id="transfer_radio2" name="transfer_radio" value="10"> 
+                            <i class="fa"></i>10点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">どの段階かで、部分介助あるいは監視が必要。</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="transfer_radio3">
+                          <input type="radio" id="transfer_radio3" name="transfer_radio" value="5"> 
+                            <i class="fa"></i>5点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">座ることはできるが、移乗は全介助。</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="transfer_radio4">
+                          <input type="radio" id="transfer_radio4" name="transfer_radio" value="0" checked> 
+                            <i class="fa"></i>0点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">全介助</div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2">
+                    整容
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="trim_radio1">
+                          <input type="radio" id="trim_radio1" name="trim_radio" value="5"> 
+                            <i class="fa"></i>5点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">自立（洗面、歯磨き、整髪、ひげそり）</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="trim_radio2">
+                          <input type="radio" id="trim_radio2" name="trim_radio" value="0" checked> 
+                            <i class="fa"></i>0点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">全介助</div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2">
+                    トイレ動作
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="toilet_radio1">
+                          <input type="radio" id="toilet_radio1" name="toilet_radio" value="10"> 
+                            <i class="fa"></i>10点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">自立、衣服の操作、後始末を含む。ポータブル便器を用いているときは、その洗浄までできる。</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="toilet_radio2">
+                          <input type="radio" id="toilet_radio2" name="toilet_radio" value="5"> 
+                            <i class="fa"></i>5点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">部分介助、体を支えたり、トイレットペーパーを用いることに介助。</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="toilet_radio3">
+                          <input type="radio" id="toilet_radio3" name="toilet_radio" value="0" checked> 
+                            <i class="fa"></i>0点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">全介助</div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2">
+                    入浴
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="bath_radio1">
+                          <input type="radio" id="bath_radio1" name="bath_radio" value="5"> 
+                            <i class="fa"></i>5点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">自立（浴槽につかる、シャワーを使う）</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="bath_radio2">
+                          <input type="radio" id="bath_radio2" name="bath_radio" value="0" checked> 
+                            <i class="fa"></i>0点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">全介助</div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2">
+                    移乗
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="transfer2_radio1">
+                          <input type="radio" id="transfer2_radio1" name="transfer2_radio" value="15"> 
+                            <i class="fa"></i>15点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">自立、45m以上平地歩行可、補装具の使用はかまわないが、車椅子、歩行器は不可。</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="transfer2_radio2">
+                          <input type="radio" id="transfer2_radio2" name="transfer2_radio" value="10"> 
+                            <i class="fa"></i>10点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">介助や監視が必要であれば、45m平地歩行可。</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="transfer2_radio3">
+                          <input type="radio" id="transfer2_radio3" name="transfer2_radio" value="5"> 
+                            <i class="fa"></i>5点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">歩行不能の場合、車椅子をうまく操作し、少なくとも45mは移動できる。</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="transfer2_radio4">
+                          <input type="radio" id="transfer2_radio4" name="transfer2_radio" value="0" checked> 
+                            <i class="fa"></i>0点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">全介助</div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2">
+                    階段昇降
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="stair_radio1">
+                          <input type="radio" id="stair_radio1" name="stair_radio" value="10"> 
+                            <i class="fa"></i>10点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">自立、手すり、杖などの使用はかまわない。</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="stair_radio2">
+                          <input type="radio" id="stair_radio2" name="stair_radio" value="5"> 
+                            <i class="fa"></i>5点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">介助または監視を要する。</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="stair_radio3">
+                          <input type="radio" id="stair_radio3" name="stair_radio" value="0" checked> 
+                            <i class="fa"></i>0点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">全介助</div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2">
+                    着替え
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="change_radio1">
+                          <input type="radio" id="change_radio1" name="change_radio" value="10"> 
+                            <i class="fa"></i>10点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">自立、靴、ファスナー、装具の着脱を含む。</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="change_radio2">
+                          <input type="radio" id="change_radio2" name="change_radio" value="5"> 
+                            <i class="fa"></i>5点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">部分介助を要するが、少なくとも半分以上の部分は自分でできる。適切な時間内にできる。</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="change_radio3">
+                          <input type="radio" id="change_radio3" name="change_radio" value="0" checked> 
+                            <i class="fa"></i>0点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">全介助</div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2">
+                    排便ｺﾝﾄﾛｰﾙ
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="defecation_radio1">
+                          <input type="radio" id="defecation_radio1" name="defecation_radio" value="10"> 
+                            <i class="fa"></i>10点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">失禁なし、浣腸、座薬の取り扱いも可能。</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="defecation_radio2">
+                          <input type="radio" id="defecation_radio2" name="defecation_radio" value="5"> 
+                            <i class="fa"></i>5点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">時に失禁あり、浣腸、座薬の取り扱いに介助を要する。</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="defecation_radio3">
+                          <input type="radio" id="defecation_radio3" name="defecation_radio" value="0" checked> 
+                            <i class="fa"></i>0点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">全介助</div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2">
+                    排尿ｺﾝﾄﾛｰﾙ
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="urination_radio1">
+                          <input type="radio" id="urination_radio1" name="urination_radio" value="10"> 
+                            <i class="fa"></i>10点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">失禁なし。</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="urination_radio2">
+                          <input type="radio" id="urination_radio2" name="urination_radio" value="5"> 
+                            <i class="fa"></i>5点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">時に失禁あり、収尿器の取り扱いに介助を要する場合も含む。</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="urination_radio3">
+                          <input type="radio" id="urination_radio3" name="urination_radio" value="0" checked> 
+                            <i class="fa"></i>0点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">全介助</div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end col -->
+        </div>
+        <h3 class="text-muted pl-3 mt-3 mb-3 text-center">DBD</h3>
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <div class="card m-b-30">
+              <div class="card-body">
+                <div class="row">
+                  <div class="form-group col-lg-3">
+                    <label>点数</label>
+                    <div class="d-flex align-items-center">
+                      <input type="text" class="form-control" id="dbd_value" value="0" />
+                      <div class="unit">&nbsp;点</div>
+                    </div>
+                  </div>
+                  <div class="form-group col-lg-3">
+                    <label>計測日<span class="star">*</span></label><span class="required">必須</span>
+                    <div class="d-flex align-items-center">
+                      <input type="text" id="datepicker07" name="datepicker07" placeholder="日付を選択してください" class="form-control" />
+                      <a href="javascript:void(0)" class="today_link ml-2" id="datepicker07_btn">本日</a>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-3 mt-1">同じことを何度も何度も聞く</div>
+                  <div class="col-lg-9">
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd1-radio1">
+                        <input type="radio" id="dbd1-radio1" name="dbd1-radios" value="4"> 
+                          <i class="fa"></i>全くない（４点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd1-radio2">
+                        <input type="radio" id="dbd1-radio2" name="dbd1-radios" value="3"> 
+                          <i class="fa"></i>ほとんどない（３点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd1-radio3">
+                        <input type="radio" id="dbd1-radio3" name="dbd1-radios" value="2"> 
+                          <i class="fa"></i>ときどきある（２点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd1-radio4">
+                        <input type="radio" id="dbd1-radio4" name="dbd1-radios" value="1"> 
+                          <i class="fa"></i>よくある（１点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd1-radio5">
+                        <input type="radio" id="dbd1-radio5" name="dbd1-radios" value="0" checked> 
+                          <i class="fa"></i>常にある（０点）</label>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-3 mt-1">よく物をなくしたり、置場所を<br>間違えたり、隠したりしている</div>
+                  <div class="col-lg-9">
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd2-radio1">
+                        <input type="radio" id="dbd2-radio1" name="dbd2-radios" value="4"> 
+                          <i class="fa"></i>全くない（４点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd2-radio2">
+                        <input type="radio" id="dbd2-radio2" name="dbd2-radios" value="3"> 
+                          <i class="fa"></i>ほとんどない（３点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd2-radio3">
+                        <input type="radio" id="dbd2-radio3" name="dbd2-radios" value="2"> 
+                          <i class="fa"></i>ときどきある（２点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd2-radio4">
+                        <input type="radio" id="dbd2-radio4" name="dbd2-radios" value="1"> 
+                          <i class="fa"></i>よくある（１点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd2-radio5">
+                        <input type="radio" id="dbd2-radio5" name="dbd2-radios" value="0" checked> 
+                          <i class="fa"></i>常にある（０点）</label>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-3 mt-1">日常的な物事に関心を示さない</div>
+                  <div class="col-lg-9">
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd3-radio1">
+                        <input type="radio" id="dbd3-radio1" name="dbd3-radios" value="4"> 
+                          <i class="fa"></i>全くない（４点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd3-radio2">
+                        <input type="radio" id="dbd3-radio2" name="dbd3-radios" value="3"> 
+                          <i class="fa"></i>ほとんどない（３点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd3-radio3">
+                        <input type="radio" id="dbd3-radio3" name="dbd3-radios" value="2"> 
+                          <i class="fa"></i>ときどきある（２点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd3-radio4">
+                        <input type="radio" id="dbd3-radio4" name="dbd3-radios" value="1"> 
+                          <i class="fa"></i>よくある（１点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd3-radio5">
+                        <input type="radio" id="dbd3-radio5" name="dbd3-radios" value="0" checked> 
+                          <i class="fa"></i>常にある（０点）</label>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-3 mt-1">特別な理由がないのに夜中起き出す</div>
+                  <div class="col-lg-9">
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd4-radio1">
+                        <input type="radio" id="dbd4-radio1" name="dbd4-radios" value="4"> 
+                          <i class="fa"></i>全くない（４点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd4-radio2">
+                        <input type="radio" id="dbd4-radio2" name="dbd4-radios" value="3"> 
+                          <i class="fa"></i>ほとんどない（３点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd4-radio3">
+                        <input type="radio" id="dbd4-radio3" name="dbd4-radios" value="2"> 
+                          <i class="fa"></i>ときどきある（２点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd4-radio4">
+                        <input type="radio" id="dbd4-radio4" name="dbd4-radios" value="1"> 
+                          <i class="fa"></i>よくある（１点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd4-radio5">
+                        <input type="radio" id="dbd4-radio5" name="dbd4-radios" value="0" checked> 
+                          <i class="fa"></i>常にある（０点）</label>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-3 mt-1">特別な根拠もないのに人に<br>言いがかりをつける</div>
+                  <div class="col-lg-9">
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd5-radio1">
+                        <input type="radio" id="dbd5-radio1" name="dbd5-radios" value="4"> 
+                          <i class="fa"></i>全くない（４点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd5-radio2">
+                        <input type="radio" id="dbd5-radio2" name="dbd5-radios" value="3"> 
+                          <i class="fa"></i>ほとんどない（３点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd5-radio3">
+                        <input type="radio" id="dbd5-radio3" name="dbd5-radios" value="2"> 
+                          <i class="fa"></i>ときどきある（２点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd5-radio4">
+                        <input type="radio" id="dbd5-radio4" name="dbd5-radios" value="1"> 
+                          <i class="fa"></i>よくある（１点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd5-radio5">
+                        <input type="radio" id="dbd5-radio5" name="dbd5-radios" value="0" checked> 
+                          <i class="fa"></i>常にある（０点）</label>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-3 mt-1">昼間、寝てばかりいる</div>
+                  <div class="col-lg-9">
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd6-radio1">
+                        <input type="radio" id="dbd6-radio1" name="dbd6-radios" value="4"> 
+                          <i class="fa"></i>全くない（４点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd6-radio2">
+                        <input type="radio" id="dbd6-radio2" name="dbd6-radios" value="3"> 
+                          <i class="fa"></i>ほとんどない（３点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd6-radio3">
+                        <input type="radio" id="dbd6-radio3" name="dbd6-radios" value="2"> 
+                          <i class="fa"></i>ときどきある（２点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd6-radio4">
+                        <input type="radio" id="dbd6-radio4" name="dbd6-radios" value="1"> 
+                          <i class="fa"></i>よくある（１点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd6-radio5">
+                        <input type="radio" id="dbd6-radio5" name="dbd6-radios" value="0" checked> 
+                          <i class="fa"></i>常にある（０点）</label>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-3 mt-1">やたらに歩き回る</div>
+                  <div class="col-lg-9">
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd7-radio1">
+                        <input type="radio" id="dbd7-radio1" name="dbd7-radios" value="4"> 
+                          <i class="fa"></i>全くない（４点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd7-radio2">
+                        <input type="radio" id="dbd7-radio2" name="dbd7-radios" value="3"> 
+                          <i class="fa"></i>ほとんどない（３点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd7-radio3">
+                        <input type="radio" id="dbd7-radio3" name="dbd7-radios" value="2"> 
+                          <i class="fa"></i>ときどきある（２点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd7-radio4">
+                        <input type="radio" id="dbd7-radio4" name="dbd7-radios" value="1"> 
+                          <i class="fa"></i>よくある（１点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd7-radio5">
+                        <input type="radio" id="dbd7-radio5" name="dbd7-radios" value="0" checked> 
+                          <i class="fa"></i>常にある（０点）</label>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-3 mt-1">同じ動作をいつまでも繰り返す</div>
+                  <div class="col-lg-9">
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd8-radio1">
+                        <input type="radio" id="dbd8-radio1" name="dbd8-radios" value="4"> 
+                          <i class="fa"></i>全くない（４点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd8-radio2">
+                        <input type="radio" id="dbd8-radio2" name="dbd8-radios" value="3"> 
+                          <i class="fa"></i>ほとんどない（３点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd8-radio3">
+                        <input type="radio" id="dbd8-radio3" name="dbd8-radios" value="2"> 
+                          <i class="fa"></i>ときどきある（２点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd8-radio4">
+                        <input type="radio" id="dbd8-radio4" name="dbd8-radios" value="1"> 
+                          <i class="fa"></i>よくある（１点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd8-radio5">
+                        <input type="radio" id="dbd8-radio5" name="dbd8-radios" value="0" checked> 
+                          <i class="fa"></i>常にある（０点）</label>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-3 mt-1">口汚くののしる</div>
+                  <div class="col-lg-9">
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd9-radio1">
+                        <input type="radio" id="dbd9-radio1" name="dbd9-radios" value="4"> 
+                          <i class="fa"></i>全くない（４点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd9-radio2">
+                        <input type="radio" id="dbd9-radio2" name="dbd9-radios" value="3"> 
+                          <i class="fa"></i>ほとんどない（３点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd9-radio3">
+                        <input type="radio" id="dbd9-radio3" name="dbd9-radios" value="2"> 
+                          <i class="fa"></i>ときどきある（２点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd9-radio4">
+                        <input type="radio" id="dbd9-radio4" name="dbd9-radios" value="1"> 
+                          <i class="fa"></i>よくある（１点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd9-radio5">
+                        <input type="radio" id="dbd9-radio5" name="dbd9-radios" value="0" checked> 
+                          <i class="fa"></i>常にある（０点）</label>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-3 mt-1">場違いあるいは季節に<br>合わない不適切な服装をする</div>
+                  <div class="col-lg-9">
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd10-radio1">
+                        <input type="radio" id="dbd10-radio1" name="dbd10-radios" value="4"> 
+                          <i class="fa"></i>全くない（４点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd10-radio2">
+                        <input type="radio" id="dbd10-radio2" name="dbd10-radios" value="3"> 
+                          <i class="fa"></i>ほとんどない（３点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd10-radio3">
+                        <input type="radio" id="dbd10-radio3" name="dbd10-radios" value="2"> 
+                          <i class="fa"></i>ときどきある（２点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd10-radio4">
+                        <input type="radio" id="dbd10-radio4" name="dbd10-radios" value="1"> 
+                          <i class="fa"></i>よくある（１点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd10-radio5">
+                        <input type="radio" id="dbd10-radio5" name="dbd10-radios" value="0" checked> 
+                          <i class="fa"></i>常にある（０点）</label>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-3 mt-1">世話をされるのを拒否する</div>
+                  <div class="col-lg-9">
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd11-radio1">
+                        <input type="radio" id="dbd11-radio1" name="dbd11-radios" value="4"> 
+                          <i class="fa"></i>全くない（４点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd11-radio2">
+                        <input type="radio" id="dbd11-radio2" name="dbd11-radios" value="3"> 
+                          <i class="fa"></i>ほとんどない（３点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd11-radio3">
+                        <input type="radio" id="dbd11-radio3" name="dbd11-radios" value="2"> 
+                          <i class="fa"></i>ときどきある（２点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd11-radio4">
+                        <input type="radio" id="dbd11-radio4" name="dbd11-radios" value="1"> 
+                          <i class="fa"></i>よくある（１点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd11-radio5">
+                        <input type="radio" id="dbd11-radio5" name="dbd11-radios" value="0" checked> 
+                          <i class="fa"></i>常にある（０点）</label>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-3 mt-1">明らかな理由なしに物を貯め込む</div>
+                  <div class="col-lg-9">
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd12-radio1">
+                        <input type="radio" id="dbd12-radio1" name="dbd12-radios" value="4"> 
+                          <i class="fa"></i>全くない（４点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd12-radio2">
+                        <input type="radio" id="dbd12-radio2" name="dbd12-radios" value="3"> 
+                          <i class="fa"></i>ほとんどない（３点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd12-radio3">
+                        <input type="radio" id="dbd12-radio3" name="dbd12-radios" value="2"> 
+                          <i class="fa"></i>ときどきある（２点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd12-radio4">
+                        <input type="radio" id="dbd12-radio4" name="dbd12-radios" value="1"> 
+                          <i class="fa"></i>よくある（１点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd12-radio5">
+                        <input type="radio" id="dbd12-radio5" name="dbd12-radios" value="0" checked> 
+                          <i class="fa"></i>常にある（０点）</label>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-3 mt-1">引き出しやタンスの中身を<br>全部だしてしまう</div>
+                  <div class="col-lg-9">
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd13-radio1">
+                        <input type="radio" id="dbd13-radio1" name="dbd13-radios" value="4"> 
+                          <i class="fa"></i>全くない（４点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd13-radio2">
+                        <input type="radio" id="dbd13-radio2" name="dbd13-radios" value="3"> 
+                          <i class="fa"></i>ほとんどない（３点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd13-radio3">
+                        <input type="radio" id="dbd13-radio3" name="dbd13-radios" value="2"> 
+                          <i class="fa"></i>ときどきある（２点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd13-radio4">
+                        <input type="radio" id="dbd13-radio4" name="dbd13-radios" value="1"> 
+                          <i class="fa"></i>よくある（１点）</label>
+                    </div>
+                    <div class="form-check-inline my-1">
+                      <label class="cr-styled" for="dbd13-radio5">
+                        <input type="radio" id="dbd13-radio5" name="dbd13-radios" value="0" checked> 
+                          <i class="fa"></i>常にある（０点）</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end col -->
+        </div>
+        <h3 class="text-muted pl-3 mt-3 mb-3 text-center">Vitality index（意欲の指標）</h3>
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <div class="card m-b-30">
+              <div class="card-body">
+                <div class="row">
+                  <div class="form-group col-lg-3">
+                    <label>点数</label>
+                    <div class="d-flex align-items-center">
+                      <input type="text" class="form-control" id="vitality_value" value="0" />
+                      <div class="unit">&nbsp;点</div>
+                    </div>
+                  </div>
+                  <div class="form-group col-lg-3">
+                    <label>計測日<span class="star">*</span></label><span class="required">必須</span>
+                    <div class="d-flex align-items-center">
+                      <input type="text" id="datepicker08" name="datepicker08" placeholder="日付を選択してください" class="form-control" />
+                      <a href="javascript:void(0)" class="today_link ml-2" id="datepicker08_btn">本日</a>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-2">
+                    起床<br>(Wake up)
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="wake_radio1">
+                          <input type="radio" id="wake_radio1" name="wake_radio" value="2"> 
+                            <i class="fa"></i>2点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">いつも定時に起床している</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="wake_radio2">
+                          <input type="radio" id="wake_radio2" name="wake_radio" value="1"> 
+                            <i class="fa"></i>1点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">起こさないと起床しないことがある</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="wake_radio3">
+                          <input type="radio" id="wake_radio3" name="wake_radio" value="0" checked> 
+                            <i class="fa"></i>0点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">自分から起床することはない</div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2">
+                    意思疎通<br>(Communication)
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="communication_radio1">
+                          <input type="radio" id="communication_radio1" name="communication_radio" value="2"> 
+                            <i class="fa"></i>2点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">自分から挨拶する、話し掛ける</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="communication_radio2">
+                          <input type="radio" id="communication_radio2" name="communication_radio" value="1"> 
+                            <i class="fa"></i>1点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">挨拶、呼びかけに対して返答や笑顔がみられる</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="communication_radio3">
+                          <input type="radio" id="communication_radio3" name="communication_radio" value="0" checked> 
+                            <i class="fa"></i>0点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">反応がない</div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2">
+                    食事<br>(Feeding)
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="feeding_radio1">
+                          <input type="radio" id="feeding_radio1" name="feeding_radio" value="2"> 
+                            <i class="fa"></i>2点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">自分から進んで食べようとする</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="feeding_radio2">
+                          <input type="radio" id="feeding_radio2" name="feeding_radio" value="1"> 
+                            <i class="fa"></i>1点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">促されると食べようとする</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="feeding_radio3">
+                          <input type="radio" id="feeding_radio3" name="feeding_radio" value="0" checked> 
+                            <i class="fa"></i>0点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">食事に関心がなく、全く食べようとしない</div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2">
+                    排泄<br>(On and Off Toilet)
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="ontoil_radio1">
+                          <input type="radio" id="ontoil_radio1" name="ontoil_radio" value="2"> 
+                            <i class="fa"></i>2点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">いつも自ら便意尿意を伝える、あるいは自分で排尿、排便を行う</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="ontoil_radio2">
+                          <input type="radio" id="ontoil_radio2" name="ontoil_radio" value="1"> 
+                            <i class="fa"></i>1点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">時々、尿意便意を伝える</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="ontoil_radio3">
+                          <input type="radio" id="ontoil_radio3" name="ontoil_radio" value="0" checked> 
+                            <i class="fa"></i>0点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">排泄に全く関心がない</div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2">
+                    リハビリ・活動<br>(Rehabilitation, Activity)
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="activity_radio1">
+                          <input type="radio" id="activity_radio1" name="activity_radio" value="2"> 
+                            <i class="fa"></i>2点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">自らリハビリに向かう、活動を求める</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="activity_radio2">
+                          <input type="radio" id="activity_radio2" name="activity_radio" value="1"> 
+                            <i class="fa"></i>1点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">促されて向かう</div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-lg-2">
+                        <label class="cr-styled" for="activity_radio3">
+                          <input type="radio" id="activity_radio3" name="activity_radio" value="0" checked> 
+                            <i class="fa"></i>0点                                                          
+                        </label>
+                      </div>
+                      <div class="col-lg-10">拒否、無関心</div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end col -->
+        </div>
+      </div>
+      <!--end container-->
+      <!--footer section start-->
+      <footer class="footer">
+        2022 &copy; リハビリメニュー管理
+      </footer>
+      <!--footer section end-->
+      <!-- Right Slidebar start -->
+      <!--end Right Slidebar-->
+    </div>
+    <!--end body content-->
+  </section>
+
+
+
+  <!-- jQuery -->
+  <script src="assets/js/jquery-3.2.1.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery-migrate.js"></script>
+  <script src="assets/js/modernizr.min.js"></script>
+  <script src="assets/js/jquery.slimscroll.min.js"></script>
+  <script src="assets/js/slidebars.min.js"></script>
+  <!-- Parsley js -->
+  <script type="text/javascript" src="assets/plugins/parsleyjs/dist/parsley.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('form').parsley();
+    });
+  </script>
+  <!-- Responsive and datatable js -->
+  <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="assets/plugins/datatables/dataTables.responsive.min.js"></script>
+  <script src="assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+  <!--app js-->
+  <!-- Sweet Alert Js  -->
+  <script src="assets/plugins/sweet-alert/sweetalert2.min.js"></script>
+  <script src="assets/pages/jquery.sweet-alert.init.js"></script>
+  <script src="assets/js/jquery.app.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#datatable').DataTable();
+    });
+  </script>
+  <script src="assets/plugins/dropify/js/dropify.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Basic
+      $('.dropify').dropify();
+
+      // Translated
+      $('.dropify-fr').dropify({
+        messages: {
+          default: 'Glissez-déposez un fichier ici ou cliquez',
+          replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+          remove: 'Supprimer',
+          error: 'Désolé, le fichier trop volumineux'
+        }
+      });
+
+      // Used events
+      var drEvent = $('#input-file-events').dropify();
+
+      drEvent.on('dropify.beforeClear', function(event, element) {
+        return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+      });
+
+      drEvent.on('dropify.afterClear', function(event, element) {
+        alert('File deleted');
+      });
+
+      drEvent.on('dropify.errors', function(event, element) {
+        console.log('Has Errors');
+      });
+
+      var drDestroy = $('#input-file-to-destroy').dropify();
+      drDestroy = drDestroy.data('dropify')
+      $('#toggleDropify').on('click', function(e) {
+        e.preventDefault();
+        if (drDestroy.isDropified()) {
+          drDestroy.destroy();
+        } else {
+          drDestroy.init();
+        }
+      })
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script>
+    $(function() {
+      $("#datepicker01").datepicker({
+        prevText: "前月",
+        nextText: "次月",
+        monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        monthNamesShort: ["１月", "２月", "３月", "４月", "５月", "６月", "７月", "８月", "９月", "１０月", "１１月", "１２月"],
+        dayNames: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+        dayNamesShort: ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"],
+        dayNamesMin: ["日", "月", "火", "水", "木", "金", "土"],
+        weekHeader: "周",
+        showWeek: false,
+        dateFormat: "yy年mm月dd日",
+        firstDay: 0 /* 週の開始を日曜にする */ ,
+        isRTL: false,
+        showMonthAfterYear: true,
+        yearSuffix: "年",
+        showButtonPanel: true,
+        closeText: "閉じる",
+        currentText: "今日"
+      });
+      var now = new Date();
+      var day = ("0" + now.getDate()).slice(-2);
+      var month = ("0" + (now.getMonth() + 1)).slice(-2);
+      var today = now.getFullYear() + "年" + (month) + "月" + (day) + "日";
+      $("#datepicker01_btn").click(function() {
+        $("#datepicker01").val(today);
+      });
+      $("#datepicker02").datepicker({
+        prevText: "前月",
+        nextText: "次月",
+        monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        monthNamesShort: ["１月", "２月", "３月", "４月", "５月", "６月", "７月", "８月", "９月", "１０月", "１１月", "１２月"],
+        dayNames: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+        dayNamesShort: ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"],
+        dayNamesMin: ["日", "月", "火", "水", "木", "金", "土"],
+        weekHeader: "周",
+        showWeek: false,
+        dateFormat: "yy年mm月dd日",
+        firstDay: 0 /* 週の開始を日曜にする */ ,
+        isRTL: false,
+        showMonthAfterYear: true,
+        yearSuffix: "年",
+        showButtonPanel: true,
+        closeText: "閉じる",
+        currentText: "今日"
+      });
+      $("#datepicker02_btn").click(function() {
+        $("#datepicker02").val(today);
+      });
+      $("#datepicker03").datepicker({
+        prevText: "前月",
+        nextText: "次月",
+        monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        monthNamesShort: ["１月", "２月", "３月", "４月", "５月", "６月", "７月", "８月", "９月", "１０月", "１１月", "１２月"],
+        dayNames: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+        dayNamesShort: ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"],
+        dayNamesMin: ["日", "月", "火", "水", "木", "金", "土"],
+        weekHeader: "周",
+        showWeek: false,
+        dateFormat: "yy年mm月dd日",
+        firstDay: 0 /* 週の開始を日曜にする */ ,
+        isRTL: false,
+        showMonthAfterYear: true,
+        yearSuffix: "年",
+        showButtonPanel: true,
+        closeText: "閉じる",
+        currentText: "今日"
+      });
+      $("#datepicker03_btn").click(function() {
+        $("#datepicker03").val(today);
+      });
+      $("#datepicker04").datepicker({
+        prevText: "前月",
+        nextText: "次月",
+        monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        monthNamesShort: ["１月", "２月", "３月", "４月", "５月", "６月", "７月", "８月", "９月", "１０月", "１１月", "１２月"],
+        dayNames: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+        dayNamesShort: ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"],
+        dayNamesMin: ["日", "月", "火", "水", "木", "金", "土"],
+        weekHeader: "周",
+        showWeek: false,
+        dateFormat: "yy年mm月dd日",
+        firstDay: 0 /* 週の開始を日曜にする */ ,
+        isRTL: false,
+        showMonthAfterYear: true,
+        yearSuffix: "年",
+        showButtonPanel: true,
+        closeText: "閉じる",
+        currentText: "今日"
+      });
+      $("#datepicker04_btn").click(function() {
+        $("#datepicker04").val(today);
+      });
+      $("#datepicker05").datepicker({
+        prevText: "前月",
+        nextText: "次月",
+        monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        monthNamesShort: ["１月", "２月", "３月", "４月", "５月", "６月", "７月", "８月", "９月", "１０月", "１１月", "１２月"],
+        dayNames: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+        dayNamesShort: ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"],
+        dayNamesMin: ["日", "月", "火", "水", "木", "金", "土"],
+        weekHeader: "周",
+        showWeek: false,
+        dateFormat: "yy年mm月dd日",
+        firstDay: 0 /* 週の開始を日曜にする */ ,
+        isRTL: false,
+        showMonthAfterYear: true,
+        yearSuffix: "年",
+        showButtonPanel: true,
+        closeText: "閉じる",
+        currentText: "今日"
+      });
+      $("#datepicker05_btn").click(function() {
+        $("#datepicker05").val(today);
+      });
+      $("#datepicker06").datepicker({
+        prevText: "前月",
+        nextText: "次月",
+        monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        monthNamesShort: ["１月", "２月", "３月", "４月", "５月", "６月", "７月", "８月", "９月", "１０月", "１１月", "１２月"],
+        dayNames: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+        dayNamesShort: ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"],
+        dayNamesMin: ["日", "月", "火", "水", "木", "金", "土"],
+        weekHeader: "周",
+        showWeek: false,
+        dateFormat: "yy年mm月dd日",
+        firstDay: 0 /* 週の開始を日曜にする */ ,
+        isRTL: false,
+        showMonthAfterYear: true,
+        yearSuffix: "年",
+        showButtonPanel: true,
+        closeText: "閉じる",
+        currentText: "今日"
+      });
+      $("#datepicker06_btn").click(function() {
+        $("#datepicker06").val(today);
+      });
+      $("#datepicker07").datepicker({
+        prevText: "前月",
+        nextText: "次月",
+        monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        monthNamesShort: ["１月", "２月", "３月", "４月", "５月", "６月", "７月", "８月", "９月", "１０月", "１１月", "１２月"],
+        dayNames: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+        dayNamesShort: ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"],
+        dayNamesMin: ["日", "月", "火", "水", "木", "金", "土"],
+        weekHeader: "周",
+        showWeek: false,
+        dateFormat: "yy年mm月dd日",
+        firstDay: 0 /* 週の開始を日曜にする */ ,
+        isRTL: false,
+        showMonthAfterYear: true,
+        yearSuffix: "年",
+        showButtonPanel: true,
+        closeText: "閉じる",
+        currentText: "今日"
+      });
+      $("#datepicker07_btn").click(function() {
+        $("#datepicker07").val(today);
+      });
+      $("#datepicker08").datepicker({
+        prevText: "前月",
+        nextText: "次月",
+        monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        monthNamesShort: ["１月", "２月", "３月", "４月", "５月", "６月", "７月", "８月", "９月", "１０月", "１１月", "１２月"],
+        dayNames: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+        dayNamesShort: ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"],
+        dayNamesMin: ["日", "月", "火", "水", "木", "金", "土"],
+        weekHeader: "周",
+        showWeek: false,
+        dateFormat: "yy年mm月dd日",
+        firstDay: 0 /* 週の開始を日曜にする */ ,
+        isRTL: false,
+        showMonthAfterYear: true,
+        yearSuffix: "年",
+        showButtonPanel: true,
+        closeText: "閉じる",
+        currentText: "今日"
+      });
+      $("#datepicker08_btn").click(function() {
+        $("#datepicker08").val(today);
+      });
+      window.mmse01 = 0;
+      window.mmse02 = 0;
+      window.mmse03 = 0;
+      window.mmse04 = 0;
+      window.mmse05 = 0;
+      window.mmse06 = 0;
+      window.mmse07 = 0;
+      window.mmse08 = 0;
+      window.mmse09 = 0;
+      window.mmse10 = 0;
+
+
+      $('input[type=radio][name=food_radio]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.mmse01 = 0;
+            break;
+          case '5':
+            window.mmse01 = 5;
+            break;
+          case '10':
+            window.mmse01 = 10;
+            break;
+        }
+        mmse_sum();
+      });
+
+      $('input[type=radio][name=transfer_radio]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.mmse02 = 0;
+            break;
+          case '5':
+            window.mmse02 = 5;
+            break;
+          case '10':
+            window.mmse02 = 10;
+            break;
+          case '15':
+            window.mmse02 = 15;
+            break;
+        }
+        mmse_sum();
+      });
+
+      $('input[type=radio][name=trim_radio]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.mmse03 = 0;
+            break;
+          case '5':
+            window.mmse03 = 5;
+            break;
+        }
+        mmse_sum();
+      });
+
+      $('input[type=radio][name=toilet_radio]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.mmse04 = 0;
+            break;
+          case '5':
+            window.mmse04 = 5;
+            break;
+          case '10':
+            window.mmse04 = 10;
+            break;
+        }
+        mmse_sum();
+      });
+
+      $('input[type=radio][name=bath_radio]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.mmse05 = 0;
+            break;
+          case '5':
+            window.mmse05 = 5;
+            break;
+
+        }
+        mmse_sum();
+      });
+
+      $('input[type=radio][name=transfer2_radio]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.mmse06 = 0;
+            break;
+          case '5':
+            window.mmse06 = 5;
+            break;
+          case '10':
+            window.mmse06 = 10;
+            break;
+          case '15':
+            window.mmse06 = 15;
+            break;
+        }
+        mmse_sum();
+      });
+
+      $('input[type=radio][name=stair_radio]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.mmse07 = 0;
+            break;
+          case '5':
+            window.mmse07 = 5;
+            break;
+          case '10':
+            window.mmse07 = 10;
+            break;
+
+        }
+        mmse_sum();
+      });
+
+      $('input[type=radio][name=change_radio]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.mmse08 = 0;
+            break;
+          case '5':
+            window.mmse08 = 5;
+            break;
+          case '10':
+            window.mmse08 = 10;
+            break;
+
+        }
+        mmse_sum();
+      });
+      $('input[type=radio][name=defecation_radio]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.mmse09 = 0;
+            break;
+          case '5':
+            window.mmse09 = 5;
+            break;
+          case '10':
+            window.mmse09 = 10;
+            break;
+
+        }
+        mmse_sum();
+      });
+
+      $('input[type=radio][name=urination_radio]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.mmse10 = 0;
+            break;
+          case '5':
+            window.mmse10 = 5;
+            break;
+          case '10':
+            window.mmse10 = 10;
+            break;
+
+        }
+        mmse_sum();
+      });
+
+      function mmse_sum() {
+        sum = window.mmse01 + window.mmse02 + window.mmse03 + window.mmse04 + window.mmse05 + window.mmse06 + window.mmse07 + window.mmse08 + window.mmse09 + window.mmse10;
+        $("#mmse_value").val(sum);
+
+      }
+
+      window.dbd01 = 0;
+      window.dbd02 = 0;
+      window.dbd03 = 0;
+      window.dbd04 = 0;
+      window.dbd05 = 0;
+      window.dbd06 = 0;
+      window.dbd07 = 0;
+      window.dbd08 = 0;
+      window.dbd09 = 0;
+      window.dbd10 = 0;
+      window.dbd11 = 0;
+      window.dbd12 = 0;
+      window.dbd13 = 0;
+
+      $('input[type=radio][name=dbd1-radios]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.dbd01 = 0;
+            break;
+          case '1':
+            window.dbd01 = 1;
+            break;
+          case '2':
+            window.dbd01 = 2;
+            break;
+          case '3':
+            window.dbd01 = 3;
+            break;
+          case '4':
+            window.dbd01 = 4;
+            break;
+
+        }
+        dbd_sum();
+      });
+
+      $('input[type=radio][name=dbd2-radios]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.dbd02 = 0;
+            break;
+          case '1':
+            window.dbd02 = 1;
+            break;
+          case '2':
+            window.dbd02 = 2;
+            break;
+          case '3':
+            window.dbd02 = 3;
+            break;
+          case '4':
+            window.dbd02 = 4;
+            break;
+
+        }
+        dbd_sum();
+      });
+
+      $('input[type=radio][name=dbd3-radios]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.dbd03 = 0;
+            break;
+          case '1':
+            window.dbd03 = 1;
+            break;
+          case '2':
+            window.dbd03 = 2;
+            break;
+          case '3':
+            window.dbd03 = 3;
+            break;
+          case '4':
+            window.dbd03 = 4;
+            break;
+
+        }
+        dbd_sum();
+      });
+
+      $('input[type=radio][name=dbd4-radios]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.dbd04 = 0;
+            break;
+          case '1':
+            window.dbd04 = 1;
+            break;
+          case '2':
+            window.dbd04 = 2;
+            break;
+          case '3':
+            window.dbd04 = 3;
+            break;
+          case '4':
+            window.dbd04 = 4;
+            break;
+
+        }
+        dbd_sum();
+      });
+
+      $('input[type=radio][name=dbd5-radios]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.dbd05 = 0;
+            break;
+          case '1':
+            window.dbd05 = 1;
+            break;
+          case '2':
+            window.dbd05 = 2;
+            break;
+          case '3':
+            window.dbd05 = 3;
+            break;
+          case '4':
+            window.dbd05 = 4;
+            break;
+
+        }
+        dbd_sum();
+      });
+
+      $('input[type=radio][name=dbd6-radios]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.dbd06 = 0;
+            break;
+          case '1':
+            window.dbd06 = 1;
+            break;
+          case '2':
+            window.dbd06 = 2;
+            break;
+          case '3':
+            window.dbd06 = 3;
+            break;
+          case '4':
+            window.dbd06 = 4;
+            break;
+
+        }
+        dbd_sum();
+      });
+
+      $('input[type=radio][name=dbd7-radios]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.dbd07 = 0;
+            break;
+          case '1':
+            window.dbd07 = 1;
+            break;
+          case '2':
+            window.dbd07 = 2;
+            break;
+          case '3':
+            window.dbd07 = 3;
+            break;
+          case '4':
+            window.dbd07 = 4;
+            break;
+
+        }
+        dbd_sum();
+      });
+
+      $('input[type=radio][name=dbd8-radios]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.dbd08 = 0;
+            break;
+          case '1':
+            window.dbd08 = 1;
+            break;
+          case '2':
+            window.dbd08 = 2;
+            break;
+          case '3':
+            window.dbd08 = 3;
+            break;
+          case '4':
+            window.dbd08 = 4;
+            break;
+
+        }
+        dbd_sum();
+      });
+
+      $('input[type=radio][name=dbd9-radios]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.dbd09 = 0;
+            break;
+          case '1':
+            window.dbd09 = 1;
+            break;
+          case '2':
+            window.dbd09 = 2;
+            break;
+          case '3':
+            window.dbd09 = 3;
+            break;
+          case '4':
+            window.dbd09 = 4;
+            break;
+
+        }
+        dbd_sum();
+      });
+
+      $('input[type=radio][name=dbd10-radios]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.dbd10 = 0;
+            break;
+          case '1':
+            window.dbd10 = 1;
+            break;
+          case '2':
+            window.dbd10 = 2;
+            break;
+          case '3':
+            window.dbd10 = 3;
+            break;
+          case '4':
+            window.dbd10 = 4;
+            break;
+
+        }
+        dbd_sum();
+      });
+
+      $('input[type=radio][name=dbd11-radios]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.dbd11 = 0;
+            break;
+          case '1':
+            window.dbd11 = 1;
+            break;
+          case '2':
+            window.dbd11 = 2;
+            break;
+          case '3':
+            window.dbd11 = 3;
+            break;
+          case '4':
+            window.dbd11 = 4;
+            break;
+
+        }
+        dbd_sum();
+      });
+
+      $('input[type=radio][name=dbd12-radios]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.dbd12 = 0;
+            break;
+          case '1':
+            window.dbd12 = 1;
+            break;
+          case '2':
+            window.dbd12 = 2;
+            break;
+          case '3':
+            window.dbd12 = 3;
+            break;
+          case '4':
+            window.dbd12 = 4;
+            break;
+
+        }
+        dbd_sum();
+      });
+
+      $('input[type=radio][name=dbd13-radios]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.dbd13 = 0;
+            break;
+          case '1':
+            window.dbd13 = 1;
+            break;
+          case '2':
+            window.dbd13 = 2;
+            break;
+          case '3':
+            window.dbd13 = 3;
+            break;
+          case '4':
+            window.dbd13 = 4;
+            break;
+
+        }
+        dbd_sum();
+      });
+
+      function dbd_sum() {
+        sum = window.dbd01 + window.dbd02 + window.dbd03 + window.dbd04 + window.dbd05 + window.dbd06 + window.dbd07 + window.dbd08 + window.dbd09 + window.dbd10 + window.dbd11 + window.dbd12 + window.dbd13;
+        $("#dbd_value").val(sum);
+      }
+
+
+      window.vitality01 = 0;
+      window.vitality02 = 0;
+      window.vitality03 = 0;
+      window.vitality04 = 0;
+      window.vitality05 = 0;
+
+      $('input[type=radio][name=wake_radio]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.vitality01 = 0;
+            break;
+          case '1':
+            window.vitality01 = 1;
+            break;
+          case '2':
+            window.vitality01 = 2;
+            break;
+
+        }
+        vitality_sum();
+      });
+
+      $('input[type=radio][name=communication_radio]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.vitality02 = 0;
+            break;
+          case '1':
+            window.vitality02 = 1;
+            break;
+          case '2':
+            window.vitality02 = 2;
+            break;
+
+        }
+        vitality_sum();
+      });
+
+      $('input[type=radio][name=feeding_radio]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.vitality03 = 0;
+            break;
+          case '1':
+            window.vitality03 = 1;
+            break;
+          case '2':
+            window.vitality03 = 2;
+            break;
+
+        }
+        vitality_sum();
+      });
+
+      $('input[type=radio][name=ontoil_radio]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.vitality04 = 0;
+            break;
+          case '1':
+            window.vitality04 = 1;
+            break;
+          case '2':
+            window.vitality04 = 2;
+            break;
+
+        }
+        vitality_sum();
+      });
+
+      $('input[type=radio][name=activity_radio]').change(function() {
+
+        switch ($(this).val()) {
+          case '0':
+            window.vitality05 = 0;
+            break;
+          case '1':
+            window.vitality05 = 1;
+            break;
+          case '2':
+            window.vitality05 = 2;
+            break;
+
+        }
+        vitality_sum();
+      });
+
+      function vitality_sum() {
+        sum = window.vitality01 + window.vitality02 + window.vitality03 + window.vitality04 + window.vitality05;
+        $("#vitality_value").val(sum);
+      }
+    });
+  </script>
+
+</body>
+
+
+</html>

@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keyword" content="">
+  <title>リハビリメニュー管理</title>
+  <!-- Theme icon -->
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
+  <!-- Responsive and DataTables -->
+  <link href="assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/morris-chart/morris.css" rel="stylesheet">
+  <!-- Sweet Alert css -->
+  <link href="assets/plugins/sweet-alert/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/dropify/css/dropify.min.css" rel="stylesheet">
+  <!-- Theme Css -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/slidebars.min.css" rel="stylesheet">
+  <link href="assets/css/icons.css" rel="stylesheet">
+  <link href="assets/css/menu.css" rel="stylesheet" type="text/css">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body class="sticky-header">
+  <section>
+    <!-- sidebar left start-->
+    <div class="sidebar-left">
+      <div class="sidebar-left-info">
+        <!--sidebar nav start-->
+        <ul class="side-navigation">
+          <li class="active text-center">
+            <a href="rehabilitation_management.html"><i class=" mdi mdi-recycle"></i><div>リハビリメニュー管理</div></a>
+          </li>
+          <li class="text-center">
+            <a href="member_search.html"><i class="mdi mdi-account-search"></i><div>ユーザ検索</div></a>
+          </li>
+          <li class="text-center external_link">
+            <a href="schedule_management.html" target="_blank"><i class="mdi mdi-calendar-clock"></i><div>スケジュール管理</div><i class="external_link_icon fa fa-external-link"></i></a>
+          </li>
+          <li class="text-center external_link">
+            <a href="today_recept_report.html" target="_blank"><i class="mdi mdi-file-document"></i><div>本日の受付状況</div><i class="external_link_icon fa fa-external-link"></i></a>
+          </li>
+          <li class="text-center">
+            <a href="rehabilitation_user_register.html"><i class="fa fa-user-plus" aria-hidden="true" style="font-size: 24px;"></i><div>リハビリ登録者</div></a>
+          </li>
+          <li class="text-center">
+            <a href="rehabilitation_used_user.html"><i class="fa fa-user" aria-hidden="true" style="font-size: 24px;"></i><div>リハビリ利用者</div></a>
+          </li>
+          <li class="text-center">
+            <a href="bath_management.html"><i class="fa fa-shower" style="font-size: 24px;"></i><div>入浴利用者</div></a>
+          </li>
+          <li class="text-center">
+            <a href="bath_management.html"><img class="bath_calendar_icon active" src="assets/images/bath_calendar_active.png" alt=""><img class="bath_calendar_icon deactive" src="assets/images/bath_calendar.png" alt=""><div>入浴スケジュール</div></a>
+          </li>
+        </ul>
+        <!--sidebar nav end-->
+      </div>
+    </div>
+    <!-- sidebar left end-->
+
+    <!-- body content start-->
+    <div class="body-content">
+      <!-- header section start-->
+      <div class="header-section">
+        <!--logo and logo icon start-->
+        <div class="logo">
+          <a href="index.html">
+            <span class="logo-img"><img src="assets/images/logo_sm.png" alt="" height="26"></span>
+            <!--<i class="fa fa-maxcdn"></i>-->
+            <span class="brand-name">リハビリメニュー管理</span>
+          </a>
+        </div>
+        <!--toggle button start-->
+        <a class="toggle-btn"><i class="ti ti-menu"></i></a>
+        <!--toggle button end-->
+        <!--mega menu start-->
+        <div id="navbar-collapse-1" class="navbar-collapse collapse mega-menu">
+          <ul class="nav navbar-nav">
+            <!-- Classic dropdown -->
+            <li class="facility_text">
+              対象施設名：
+            </li>
+            <li class="dropdown">
+              <a href="javascript:;" data-toggle="dropdown" class="" aria-expanded="false"> 未選択 <i class="mdi mdi-chevron-down"></i> </a>
+              <ul role="menu" class="dropdown-menu language-switch" x-placement="bottom-start">
+                <li>
+                  <a href="javascript:;"> リハビリ施設A </a>
+                </li>
+                <li>
+                  <a href="javascript:;"> リハビリ施設B </a>
+                </li>
+                <li>
+                  <a href="javascript:;"> リハビリ施設C </a>
+                </li>
+                <li>
+                  <a href="javascript:;"> リハビリ施設D </a>
+                </li>
+                <li>
+                  <a href="javascript:;"> リハビリ施設E </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!--mega menu end-->
+        <div class="notification-wrap">
+          <!--right notification start-->
+          <div class="right-notification">
+            <ul class="notification-menu">
+              <li>
+                <div class="d-flex align-items-center ml-4">
+                  <div class="people_name">山田　太郎（職員）</div>
+                  <a href="javascript:;" data-toggle="dropdown">
+                    <i class="mdi mdi-settings m-r-5 text-muted"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right profile-menu">
+                    <a class="dropdown-item" href="#"><i class="mdi mdi-logout m-r-5 text-muted"></i> ログアウト</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!--right notification end-->
+        </div>
+      </div>
+      <!-- header section end-->
+      <div class="container-fluid">
+        <div class="page-head row">
+          <div class="col-sm-12 col-md-6">
+            <h4 class="mt-2 mb-2 w_color">リハビリメニュー管理</h4>
+          </div>
+          <div class="col-sm-12 col-md-6 new_invoice_btn_wrap">
+            <button type="button " class="btn btn-danger" data-toggle="modal" data-target="#new_device_regist">新規メニュー登録</button>
+          </div>
+          <div class="modal fade show" id="new_device_regist" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelform">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">新規メニュー登録</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                  <form class="" action="#">
+                    <div class="form-group">
+                      <label>メニューID</label>
+                      <input type="number" class="form-control" disabled placeholder="システムで自動採番される" />
+                    </div>
+                    <div class="form-group">
+                      <label>メニュー名<span class="star">*</span></label><span class="required">必須</span>
+                      <input type="text" class="form-control" required placeholder="メニュー名" />
+                    </div>
+                    <div class="form-group">
+                      <label>メニュー分類<span class="star">*</span></label><span class="required">必須</span>
+                      <select class="form-control" name="" id="">
+												<option value="">-</option>
+												<option value="分類1">分類1</option>
+												<option value="分類2">分類2</option>
+												<option value="分類3">分類3</option>
+												<option value="分類4">分類4</option>
+												<option value="分類5">分類5</option>
+												<option value="分類6">分類6</option>
+												<option value="分類7">分類7</option>
+												<option value="分類8">分類8</option>												
+											</select>
+                    </div>
+                    <div class="form-group">
+                      <label>画像登録<span class="star">*</span></label><span class="required">必須</span>
+                      <input type="file" id="input-file-now" class="dropify">
+                    </div>
+                    <div class="form-group">
+                      <label>説明</label><span class="general">任意</span>
+                      <textarea class="form-control" placeholder="説明" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>注意事項</label><span class="general">任意</span>
+                      <textarea class="form-control" placeholder="注意事項" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>備考</label><span class="general">任意</span>
+                      <textarea class="form-control" placeholder="備考" rows="4"></textarea>
+                    </div>
+                    <div class="form-group mb-0 mt-3">
+                      <div>
+                        <button type="submit" class="btn btn-info waves-effect waves-light">登録</button>
+                        <button type="reset" data-dismiss="modal" class="btn btn-secondary waves-effect m-l-5">キャンセル</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card m-b-30">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-8 free_keyword_wrap mb-3">
+                    <div class="d-lg-flex align-items-center justify-content-between">
+                      <div class="text mb-2 mb-lg-0 ">フリーワード</div>
+                      <input type="search" class="form-control form-control-sm" placeholder="">
+                      <label class="cr-styled ml-0 ml-lg-3 mt-2 mt-lg-0"><input type="checkbox"><i class="fa"></i>あいまい検索</label>
+                    </div>
+                  </div>
+                </div>
+                <form class="" action="" novalidate="">
+                  <div class="row main_search">
+                    <div class="col-lg-3 mt-2 mb-2">
+                      <div class="search_title mb-1">メニューID</div>
+                      <input type="search" class="form-control form-control-sm" placeholder="">
+                    </div>
+                    <div class="col-lg-3 mt-2 mb-2">
+                      <div class="search_title mb-1">メニュー名</div>
+                      <input type="search" class="form-control form-control-sm" placeholder="">
+                    </div>
+                  </div>
+                  <div class="row main_search">
+                    <div class="col-lg-12 mt-2 mb-2">
+                      <div class="checkbox my-1">
+                        <label class="cr-styled">
+                					<input type="checkbox"><i class="fa"></i>分類1</label>
+                        <label class="cr-styled">
+                					<input type="checkbox"><i class="fa"></i>分類2</label>
+                        <label class="cr-styled">
+                					<input type="checkbox"><i class="fa"></i>分類3</label>
+                        <label class="cr-styled">
+                					<input type="checkbox"><i class="fa"></i>分類4</label>
+                        <label class="cr-styled">
+                					<input type="checkbox"><i class="fa"></i>分類5</label>
+                        <label class="cr-styled">
+                					<input type="checkbox"><i class="fa"></i>分類6</label>
+                        <label class="cr-styled">
+                					<input type="checkbox"><i class="fa"></i>分類7</label>
+                        <label class="cr-styled">
+                					<input type="checkbox"><i class="fa"></i>分類8</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-0 mt-3 text-right">
+                    <div class="d-flex align-items-center justify-content-end">
+                      <div class="no_data_search mr-2"><label class="cr-styled "><input type="checkbox"><i class="fa"></i>無効なデータも含めて検索する</label></div>
+                      <button type="submit" class="btn btn-info waves-effect waves-light ">検索</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- user deatails table -->
+        <div class="data-table">
+          <div class="row">
+            <div class="col-lg-12 col-sm-12">
+              <div class="card m-b-30">
+                <div class="card-body table-responsive">
+                  <h5 class="header-title mb-3">端末一覧</h5>
+                  <div class="table-odd">
+                    <div id="datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <table id="datatable" class="table table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                            <thead>
+                              <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">メニューID</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">メニュー名</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">メニュー分類</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">備考</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">更新</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">レコメンド</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">無効</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr role="row" class="odd">
+                                <td class="sorting_1">12345</td>
+                                <td>メニューA</td>
+                                <td>分類1</td>
+                                <td>備考です</td>
+                                <td>
+                                  <a href="#" data-toggle="modal" data-target="#edit_device_regist">更新</a>
+                                  <div class="modal fade show" id="edit_device_regist" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelform">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">メニュー更新</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <form class="" action="#">
+                                            <div class="form-group">
+                                              <label>メニューID</label>
+                                              <input type="number" class="form-control" disabled placeholder="システムで自動採番される" />
+                                            </div>
+                                            <div class="form-group">
+                                              <label>メニュー名<span class="star">*</span></label><span class="required">必須</span>
+                                              <input type="text" class="form-control" required placeholder="メニュー名" />
+                                            </div>
+                                            <div class="form-group">
+                                              <label>メニュー分類<span class="star">*</span></label><span class="required">必須</span>
+                                              <select class="form-control" name="" id="">
+																								<option value="">-</option>
+																								<option value="分類1">分類1</option>
+																								<option value="分類2">分類2</option>
+																								<option value="分類3">分類3</option>
+																								<option value="分類4">分類4</option>
+																								<option value="分類5">分類5</option>
+																								<option value="分類6">分類6</option>
+																								<option value="分類7">分類7</option>
+																								<option value="分類8">分類8</option>												
+																							</select>
+                                            </div>
+                                            <div class="form-group">
+                                              <label>画像登録<span class="star">*</span></label><span class="required">必須</span>
+                                              <input type="file" id="input-file-now" class="dropify">
+                                            </div>
+                                            <div class="form-group">
+                                              <label>説明</label><span class="general">任意</span>
+                                              <textarea class="form-control" placeholder="説明" rows="4"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                              <label>注意事項</label><span class="general">任意</span>
+                                              <textarea class="form-control" placeholder="注意事項" rows="4"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                              <label>備考</label><span class="general">任意</span>
+                                              <textarea class="form-control" placeholder="備考" rows="4"></textarea>
+                                            </div>
+                                            <div class="form-group mb-0 mt-3">
+                                              <div>
+                                                <button type="submit" class="btn btn-info waves-effect waves-light">更新</button>
+                                                <button type="reset" data-dismiss="modal" class="btn btn-secondary waves-effect m-l-5">キャンセル</button>
+                                              </div>
+                                            </div>
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <a href="#" data-toggle="modal" data-target="#edit_setting">設定</a>
+                                  <div id="edit_setting" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                                    <div class="modal-dialog modal-lg">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title">メニューA&nbsp;&nbsp;&nbsp;&nbsp;レコメンド設定</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body bg_gray_color">
+                                          <div class="col-lg-12">
+                                            <div class="tab-2 m-b-30">
+                                              <ul class="nav nav-tabs">
+                                                <li class="nav-item">
+                                                  <a class="nav-link active show" href="#second_tab1" data-toggle="tab" aria-expanded="false">心疾患</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                  <a class="nav-link" href="#second_tab2" data-toggle="tab" aria-expanded="false">認知症</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                  <a class="nav-link" href="#second_tab3" data-toggle="tab" aria-expanded="false">生活習慣病</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                  <a class="nav-link" href="#second_tab4" data-toggle="tab" aria-expanded="false">運動系疾患</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                  <a class="nav-link" href="#second_tab5" data-toggle="tab" aria-expanded="false">肺疾患</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                  <a class="nav-link" href="#second_tab6" data-toggle="tab" aria-expanded="false">精神疾患</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                  <a class="nav-link" href="#second_tab7" data-toggle="tab" aria-expanded="false">脳疾患</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                  <a class="nav-link" href="#second_tab8" data-toggle="tab" aria-expanded="false">神経疾患</a>
+                                                </li>
+                                              </ul>
+                                              <div class="tab-content bg-white">
+                                                <div class="tab-pane p-4 active show" id="second_tab1">
+                                                  <div class="col-lg-12">
+                                                    <div class="tab-7 m-b-30">
+                                                      <ul class="nav flex-column">
+                                                        <li class="nav-item">
+                                                          <a class="nav-link active" href="#second_tab11" data-toggle="tab" aria-expanded="false">息苦しさを感じる</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link" href="#second_tab12" data-toggle="tab" aria-expanded="false">声がかすれる</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link" href="#second_tab13" data-toggle="tab" aria-expanded="false">動くとすぐに息が上がる</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link border_bottom_none" href="#second_tab14" data-toggle="tab" aria-expanded="false">むくみがある</a>
+                                                        </li>
+                                                      </ul>
+                                                      <div class="tab-content ">
+                                                        <div class="tab-pane active p-4" id="second_tab11">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab111" class="second_tab_text">声を出して肺活量を鍛える</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab112" class="second_tab_text">筋肉量を増やしたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab113" class="second_tab_text">筋肉を柔らかくする</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab12">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab121" class="second_tab_text">声がしっかりでるようにしたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab122" class="second_tab_text">のどに負担のかからない食事がとりたい</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab13">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab131" class="second_tab_text">筋肉量を増やしたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab132" class="second_tab_text">声を出して肺活量を鍛える</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab133" class="second_tab_text">体力のつく食事が作れるようになる</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab14">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab141" class="second_tab_text">足の循環を良くしたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab142" class="second_tab_text">物を使って全身の循環を良くする</span></label>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tab-pane p-4" id="second_tab2">
+                                                  <div class="col-lg-12">
+                                                    <div class="tab-7 m-b-30">
+                                                      <ul class="nav flex-column">
+                                                        <li class="nav-item">
+                                                          <a class="nav-link active" href="#second_tab21" data-toggle="tab" aria-expanded="false">物忘れが増えた</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link" href="#second_tab22" data-toggle="tab" aria-expanded="false">理解力・判断力の低下</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link" href="#second_tab23" data-toggle="tab" aria-expanded="false">時間・場所がわからなくなる</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link border_bottom_none" href="#second_tab24" data-toggle="tab" aria-expanded="false">身の回りのことができなくなる</a>
+                                                        </li>
+                                                      </ul>
+                                                      <div class="tab-content ">
+                                                        <div class="tab-pane active p-4" id="second_tab21">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab211" class="second_tab_text">漢字の読み書き・計算ができるようになる</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab212" class="second_tab_text">忘れないようにメモがとれるようになりたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab213" class="second_tab_text">集中して物事に取り組みたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab214" class="second_tab_text"></span>他者と関わりながら取り組みがしたい</label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab22">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab221" class="second_tab_text">漢字の読み書き・計算ができるようになる</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab222" class="second_tab_text">知識を広めたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab223" class="second_tab_text">静かなところで細かい作業がしたい</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab23">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab231" class="second_tab_text">時間や文字を忘れないようにしたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab232" class="second_tab_text">自分のいる場所が把握したい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab233" class="second_tab_text">外での場所がわかるようになりたい</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab24">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab241" class="second_tab_text">読み書きができるようになりたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab242" class="second_tab_text">デジタル機器がつかえるようになりたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab243" class="second_tab_text">細かい作業ができるようになる</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab244" class="second_tab_text">外に出て気分転換がしたい</span></label>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tab-pane p-4" id="second_tab3">
+                                                  <div class="col-lg-12">
+                                                    <div class="tab-7 m-b-30">
+                                                      <ul class="nav flex-column">
+                                                        <li class="nav-item">
+                                                          <a class="nav-link active" href="#second_tab31" data-toggle="tab" aria-expanded="false">ご飯がおいしくない</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link" href="#second_tab32" data-toggle="tab" aria-expanded="false">運動不足</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link border_bottom_none" href="#second_tab33" data-toggle="tab" aria-expanded="false">ストレスを抱えている</a>
+                                                        </li>
+                                                      </ul>
+                                                      <div class="tab-content ">
+                                                        <div class="tab-pane active p-4" id="second_tab31">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab311" class="second_tab_text">食事で栄養の偏りがないように献立を考える</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab312" class="second_tab_text">好き嫌いが多いので食べれる物を増やす</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab313" class="second_tab_text">お腹が空くように体をうごかしたい。</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab32">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab321" class="second_tab_text">活動量を増やす</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab322" class="second_tab_text">ストレッチしながら体を動かす</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab323" class="second_tab_text">室内で気軽に運動できる</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span　id="second_tab324" class="second_tab_text">楽しみながら体を動かす</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab33">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab331" class="second_tab_text">声を出してストレス発散</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab332" class="second_tab_text">歌を聞いてストレス発散</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab333" class="second_tab_text">外に出て気分転換</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab334" class="second_tab_text">身体を動かしてしてストレス発散</span></label>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tab-pane p-4" id="second_tab4">
+                                                  <div class="col-lg-12">
+                                                    <div class="tab-7 m-b-30">
+                                                      <ul class="nav flex-column">
+                                                        <li class="nav-item">
+                                                          <a class="nav-link active" href="#second_tab41" data-toggle="tab" aria-expanded="false">足があがらない</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link" href="#second_tab42" data-toggle="tab" aria-expanded="false">腕が上がらない</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link" href="#second_tab43" data-toggle="tab" aria-expanded="false">転ぶことが増えた</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link border_bottom_none" href="#second_tab44" data-toggle="tab" aria-expanded="false">腰が痛い</a>
+                                                        </li>
+                                                      </ul>
+                                                      <div class="tab-content ">
+                                                        <div class="tab-pane active p-4" id="second_tab41">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab411" class="second_tab_text">筋肉量を増やしたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab412" class="second_tab_text">筋肉の使い方を上手になりたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab413" class="second_tab_text">足関節を柔らかくしたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab414" class="second_tab_text">筋力をつけたい</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab42">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab421" class="second_tab_text">腕が振れるようになりたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab422" class="second_tab_text">筋肉の使い方を上手になりたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab423" class="second_tab_text">関節を柔らかくしたい</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab43">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab431" class="second_tab_text">筋肉量を増やしたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab432" class="second_tab_text">筋肉の使い方を上手になりたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab433" class="second_tab_text">足関節を柔らかくしたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span  id="second_tab434" class="second_tab_text">運動をしながら改善したい</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab44">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab441" class="second_tab_text">関節を柔らかくしたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab442" class="second_tab_text">腰を伸ばす運動がしたい</span></label>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tab-pane p-4" id="second_tab5">
+                                                  <div class="col-lg-12">
+                                                    <div class="tab-7 m-b-30">
+                                                      <ul class="nav flex-column">
+                                                        <li class="nav-item">
+                                                          <a class="nav-link active" href="#second_tab51" data-toggle="tab" aria-expanded="false">動くとすぐに息が上がる</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link" href="#second_tab52" data-toggle="tab" aria-expanded="false">息苦しさを感じる</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link" href="#second_tab53" data-toggle="tab" aria-expanded="false">痰が絡んだ咳が出る</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link border_bottom_none" href="#second_tab54" data-toggle="tab" aria-expanded="false">呼吸をするときに<br>ヒューヒュー・ゼーゼーなる</a>
+                                                        </li>
+                                                      </ul>
+                                                      <div class="tab-content ">
+                                                        <div class="tab-pane active p-4" id="second_tab51">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab511" class="second_tab_text">声を出して肺活量を鍛える</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab512" class="second_tab_text">筋肉量を増やしたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab513" class="second_tab_text">体力のつく食事が作れるようになる</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab52">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab521" class="second_tab_text">声を出して肺活量を鍛える</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab522" class="second_tab_text">肺活量を鍛えたい</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab53">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab531" class="second_tab_text">声を出して肺活量を鍛える</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab54">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab541" class="second_tab_text">声を出して肺活量を鍛える</span></label>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tab-pane p-4" id="second_tab6">
+                                                  <div class="col-lg-12">
+                                                    <div class="tab-7 m-b-30">
+                                                      <ul class="nav flex-column">
+                                                        <li class="nav-item">
+                                                          <a class="nav-link active" href="#second_tab61" data-toggle="tab" aria-expanded="false">感情のコントロールが難しい</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link" href="#second_tab62" data-toggle="tab" aria-expanded="false">集中して物事に取り組めない</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link border_bottom_none" href="#second_tab63" data-toggle="tab" aria-expanded="false">ぼーっとなることがある</a>
+                                                        </li>
+                                                      </ul>
+                                                      <div class="tab-content ">
+                                                        <div class="tab-pane active p-4" id="second_tab61">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab611" class="second_tab_text">感情を抑えたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab612" class="second_tab_text">心をおちつかせて過ごしたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab613" class="second_tab_text">ストレスが溜まらないようにしたい</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab62">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab621" class="second_tab_text">細かい作業で集中力をつけたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab622" class="second_tab_text">体を動かしながら集中したい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab623" class="second_tab_text">打ち込むことが欲しい</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab63">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab631" class="second_tab_text">寝つきが悪い</span></label>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tab-pane p-4" id="second_tab7">
+                                                  <div class="col-lg-12">
+                                                    <div class="tab-7 m-b-30">
+                                                      <ul class="nav flex-column">
+                                                        <li class="nav-item">
+                                                          <a class="nav-link active" href="#second_tab71" data-toggle="tab" aria-expanded="false">身体の動きが悪い</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link" href="#second_tab72" data-toggle="tab" aria-expanded="false">物が見えにくい</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link" href="#second_tab73" data-toggle="tab" aria-expanded="false">言葉がうまくでない</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link border_bottom_none" href="#second_tab74" data-toggle="tab" aria-expanded="false">バランスがとりにくい</a>
+                                                        </li>
+                                                      </ul>
+                                                      <div class="tab-content ">
+                                                        <div class="tab-pane active p-4" id="second_tab71">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab711" class="second_tab_text">筋肉量を増やしたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab712" class="second_tab_text">関節が固まらないようにしたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab713" class="second_tab_text">関節の可動域を広げたい</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab72">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab721" class="second_tab_text">動くものをみえるようになる</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab722" class="second_tab_text">小さいものが把握できるようになる</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab723" class="second_tab_text">字が把握できるようになる</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab724" class="second_tab_text">ビタミン不足を補う食事がしたい</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab73">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab731" class="second_tab_text">声を出して肺活量を鍛える</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab732" class="second_tab_text">声をだせるように練習したい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab733" class="second_tab_text">言葉をわすれないようにしたい</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab74">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab741" class="second_tab_text">筋肉の使い方を練習したい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab742" class="second_tab_text">筋肉を柔らかく使いたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab743" class="second_tab_text">横への転倒を減らしたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab744" class="second_tab_text">上肢を柔らかくしたい</span></label>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tab-pane p-4" id="second_tab8">
+                                                  <div class="col-lg-12">
+                                                    <div class="tab-7 m-b-30">
+                                                      <ul class="nav flex-column">
+                                                        <li class="nav-item">
+                                                          <a class="nav-link active" href="#second_tab81" data-toggle="tab" aria-expanded="false">手のしびれ</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link" href="#second_tab82" data-toggle="tab" aria-expanded="false">手の震え</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link" href="#second_tab83" data-toggle="tab" aria-expanded="false">足がでにくい</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                          <a class="nav-link border_bottom_none" href="#second_tab84" data-toggle="tab" aria-expanded="false">腰が痛い</a>
+                                                        </li>
+                                                      </ul>
+                                                      <div class="tab-content ">
+                                                        <div class="tab-pane active p-4" id="second_tab81">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab811" class="second_tab_text">細かい作業ができるようになりたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab812" class="second_tab_text">手先の感覚を忘れないようにしたい</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab82">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab821" class="second_tab_text">細かい作業ができるようになる</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab822" class="second_tab_text">正確な作業ができる</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab823" class="second_tab_text">手が震えても字が書きたい</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab83">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab831" class="second_tab_text">筋肉の使い方を上手になりたい</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab832" class="second_tab_text">伝え歩きができる</span></label>
+                                                          </div>
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span id="second_tab833" class="second_tab_text">筋肉の使い方を上手になりたい</span></label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="tab-pane p-4" id="second_tab84">
+                                                          <div class="checkbox my-2">
+                                                            <label class="cr-styled">
+																														<select class="setting_select" name="" id="">
+																															<option value="なし">なし</option>
+																															<option value="1">1</option>
+																															<option value="2">2</option>
+																														</select><span  id="second_tab841" class="second_tab_text">腰痛を改善</span></label>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="tab-2 m-b-3 bg-white">
+                                              <div class="first_section p-3">
+                                                <h5>1</h5>
+                                              </div>
+                                              <div class="second_section p-3">
+                                                <h5>2</h5>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-primary">設定</button>
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <a href="#" data-toggle="modal" data-target=".disable_modal" class="">無効</a>
+                                  <div class="modal fade disable_modal" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          このデータを無効にしてよろしいですか？
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">はい</button>
+                                          <button type="button" class="btn btn-primary" data-dismiss="modal">いいえ</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr role="row" class="even">
+                                <td class="sorting_1">12346</td>
+                                <td>メニューB</td>
+                                <td>分類2</td>
+                                <td>備考です</td>
+                                <td>
+                                  <a href="#" data-toggle="modal" data-target="#edit_device_regist">更新</a>
+                                </td>
+                                <td>
+                                  <a href="#" data-toggle="modal" data-target="#edit_setting">設定</a>
+                                </td>
+                                <td>
+                                  <a href="#" data-toggle="modal" data-target=".enable_modal" class="">有効</a>
+                                  <div class="modal fade enable_modal" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          このデータを有効に戻してよろしいですか？
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">はい</button>
+                                          <button type="button" class="btn btn-primary" data-dismiss="modal">いいえ</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end row-->
+        </div>
+      </div>
+      <!--end container-->
+      <!--footer section start-->
+      <footer class="footer">
+        2022 &copy; リハビリメニュー管理
+      </footer>
+      <!--footer section end-->
+      <!-- Right Slidebar start -->
+      <!--end Right Slidebar-->
+    </div>
+    <!--end body content-->
+  </section>
+
+
+
+  <!-- jQuery -->
+  <script src="assets/js/jquery-3.2.1.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery-migrate.js"></script>
+  <script src="assets/js/modernizr.min.js"></script>
+  <script src="assets/js/jquery.slimscroll.min.js"></script>
+  <script src="assets/js/slidebars.min.js"></script>
+  <!-- Parsley js -->
+  <script type="text/javascript" src="assets/plugins/parsleyjs/dist/parsley.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('form').parsley();
+    });
+  </script>
+  <!-- Responsive and datatable js -->
+  <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="assets/plugins/datatables/dataTables.responsive.min.js"></script>
+  <script src="assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+  <!--app js-->
+  <!-- Sweet Alert Js  -->
+  <script src="assets/plugins/sweet-alert/sweetalert2.min.js"></script>
+  <script src="assets/pages/jquery.sweet-alert.init.js"></script>
+  <script src="assets/js/jquery.app.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#datatable').DataTable();
+    });
+  </script>
+  <script src="assets/plugins/dropify/js/dropify.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Basic
+      $('.dropify').dropify();
+
+      // Translated
+      $('.dropify-fr').dropify({
+        messages: {
+          default: 'Glissez-déposez un fichier ici ou cliquez',
+          replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+          remove: 'Supprimer',
+          error: 'Désolé, le fichier trop volumineux'
+        }
+      });
+
+      // Used events
+      var drEvent = $('#input-file-events').dropify();
+
+      drEvent.on('dropify.beforeClear', function(event, element) {
+        return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+      });
+
+      drEvent.on('dropify.afterClear', function(event, element) {
+        alert('File deleted');
+      });
+
+      drEvent.on('dropify.errors', function(event, element) {
+        console.log('Has Errors');
+      });
+
+      var drDestroy = $('#input-file-to-destroy').dropify();
+      drDestroy = drDestroy.data('dropify')
+      $('#toggleDropify').on('click', function(e) {
+        e.preventDefault();
+        if (drDestroy.isDropified()) {
+          drDestroy.destroy();
+        } else {
+          drDestroy.init();
+        }
+      })
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script>
+    $(function() {
+      $("#datepicker_start").datepicker({
+        prevText: "前月",
+        nextText: "次月",
+        monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        monthNamesShort: ["１月", "２月", "３月", "４月", "５月", "６月", "７月", "８月", "９月", "１０月", "１１月", "１２月"],
+        dayNames: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+        dayNamesShort: ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"],
+        dayNamesMin: ["日", "月", "火", "水", "木", "金", "土"],
+        weekHeader: "周",
+        showWeek: false,
+        dateFormat: "yy年mm月dd日",
+        firstDay: 0 /* 週の開始を日曜にする */ ,
+        isRTL: false,
+        showMonthAfterYear: true,
+        yearSuffix: "年",
+        showButtonPanel: true,
+        closeText: "閉じる",
+        currentText: "今日"
+      });
+
+      $("#datepicker_end").datepicker({
+        prevText: "前月",
+        nextText: "次月",
+        monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        monthNamesShort: ["１月", "２月", "３月", "４月", "５月", "６月", "７月", "８月", "９月", "１０月", "１１月", "１２月"],
+        dayNames: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+        dayNamesShort: ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"],
+        dayNamesMin: ["日", "月", "火", "水", "木", "金", "土"],
+        weekHeader: "周",
+        showWeek: false,
+        dateFormat: "yy年mm月dd日",
+        firstDay: 0 /* 週の開始を日曜にする */ ,
+        isRTL: false,
+        showMonthAfterYear: true,
+        yearSuffix: "年",
+        showButtonPanel: true,
+        closeText: "閉じる",
+        currentText: "今日"
+      });
+      $(".print_show_section").hide();
+      $(".setting_select").change(function() {
+        var select_value = $(this).val();
+        if (select_value == "1") {
+          var $current_id_value = $(this).parent().find('.second_tab_text').prop('id');
+          var $id_value = $(this).parent().parent().parent().prop('id');
+          $(".first_section").find("." + $current_id_value).hide();
+          $(".second_section").find("." + $current_id_value).hide();
+          var $id_value_del_last = $id_value.slice(0, -1);
+          var $a_href_value = $('a[href="#' + $id_value + '"]').text();
+          var $first_tab_value = $('a[href="#' + $id_value_del_last + '"]').text();
+          var $append_val = "<div class='" + $current_id_value + "'>" + $first_tab_value + '&nbsp;&nbsp;>>&nbsp;&nbsp;' + $a_href_value + '&nbsp;&nbsp;>>&nbsp;&nbsp;' + $(this).parent().find('.second_tab_text').text() + "</div>";
+          $(".first_section").append($append_val);
+        }
+        if (select_value == "2") {
+          var $current_id_value = $(this).parent().find('.second_tab_text').prop('id');
+          var $id_value = $(this).parent().parent().parent().prop('id');
+          $(".first_section").find("." + $current_id_value).hide();
+          $(".second_section").find("." + $current_id_value).hide();
+          var $id_value_del_last = $id_value.slice(0, -1);
+          var $a_href_value = $('a[href="#' + $id_value + '"]').text();
+          var $first_tab_value = $('a[href="#' + $id_value_del_last + '"]').text();
+          var $append_val = "<div class='" + $current_id_value + "'>" + $first_tab_value + '&nbsp;&nbsp;>>&nbsp;&nbsp;' + $a_href_value + '&nbsp;&nbsp;>>&nbsp;&nbsp;' + $(this).parent().find('.second_tab_text').text() + "</div>";
+          $(".second_section").append($append_val);
+        }
+        if (select_value == "なし") {
+          var $current_id_value = $(this).parent().find('.second_tab_text').prop('id');
+          $(".first_section").find("." + $current_id_value).hide();
+          $(".second_section").find("." + $current_id_value).hide();
+        }
+      });
+
+    });
+  </script>
+</body>
+
+</html>

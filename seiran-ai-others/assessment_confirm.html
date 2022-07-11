@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keyword" content="">
+  <title>リハビリメニュー管理</title>
+  <!-- Theme icon -->
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
+  <!-- Responsive and DataTables -->
+  <link href="assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/morris-chart/morris.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+  <!-- Sweet Alert css -->
+  <link href="assets/plugins/sweet-alert/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/dropify/css/dropify.min.css" rel="stylesheet">
+  <!-- Theme Css -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/slidebars.min.css" rel="stylesheet">
+  <link href="assets/css/icons.css" rel="stylesheet">
+  <link href="assets/css/menu.css" rel="stylesheet" type="text/css">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body class="sticky-header">
+  <section>
+    <!-- sidebar left start-->
+
+    <!-- sidebar left end-->
+
+    <!-- body content start-->
+    <div class="body-content no-sidebar">
+      <!-- header section start-->
+      <div class="header-section">
+        <!--logo and logo icon start-->
+        <div class="logo">
+          <a href="index.html">
+            <span class="logo-img"><img src="assets/images/logo_sm.png" alt="" height="26"></span>
+            <!--<i class="fa fa-maxcdn"></i>-->
+            <span class="brand-name">リハビリメニュー管理</span>
+          </a>
+        </div>
+        <!--toggle button start-->
+
+        <!--toggle button end-->
+        <!--mega menu start-->
+        <div id="navbar-collapse-1" class="navbar-collapse collapse mega-menu">
+          <ul class="nav navbar-nav">
+            <!-- Classic dropdown -->
+            <li class="facility_text">
+              対象施設名：
+            </li>
+            <li class="dropdown">
+              <a href="javascript:;" data-toggle="dropdown" class="" aria-expanded="false"> 未選択 <i class="mdi mdi-chevron-down"></i> </a>
+              <ul role="menu" class="dropdown-menu language-switch" x-placement="bottom-start">
+                <li>
+                  <a href="javascript:;"> リハビリ施設A </a>
+                </li>
+                <li>
+                  <a href="javascript:;"> リハビリ施設B </a>
+                </li>
+                <li>
+                  <a href="javascript:;"> リハビリ施設C </a>
+                </li>
+                <li>
+                  <a href="javascript:;"> リハビリ施設D </a>
+                </li>
+                <li>
+                  <a href="javascript:;"> リハビリ施設E </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!--mega menu end-->
+        <div class="notification-wrap">
+          <!--right notification start-->
+          <div class="right-notification">
+            <ul class="notification-menu">
+              <li>
+                <div class="d-flex align-items-center ml-4">
+                  <div class="people_name">山田　太郎（職員）</div>
+                  <a href="javascript:;" data-toggle="dropdown">
+                    <i class="mdi mdi-settings m-r-5 text-muted"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right profile-menu">
+                    <a class="dropdown-item" href="#"><i class="mdi mdi-logout m-r-5 text-muted"></i> ログアウト</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!--right notification end-->
+        </div>
+      </div>
+      <!-- header section end-->
+      <div class="container-fluid">
+        <div class="page-head row">
+          <div class="col-sm-12 col-md-6">
+            <h4 class="mt-2 mb-2">アセスメント確認　山田 太郎様（00012345）</h4>
+          </div>
+          <div class="col-sm-12 col-md-6 new_invoice_btn_wrap">
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target=".close_alert_modal">このウィンドウを閉じる</button>
+
+            <a href="assessment_regist.html" target="_blank"><button type="button" class="btn btn-danger">アセスメント新規登録</button></a>
+          </div>
+          <div class="modal fade close_alert_modal" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  <p>このウィンドウを閉じますがよろしいですか？（保存していない内容は破棄されます）</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" onclick="window.close(); ">OK</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card m-b-30">
+              <div class="card-body">
+                <form class="" action="" novalidate="">
+                  <div class="row">
+                    <div class="col-lg-6 mb-3">
+                      <div class="d-lg-flex align-items-center">
+                        <div class="invo_right_section">
+                          <div class="row main_search">
+                            <div class="col-lg-12 inner_wrap d-flex justify-content-between align-items-center">
+                              <input type="text" id="datepicker_start" name="datepicker_start" placeholder="開始日付を選択" class="form-control" />&nbsp;~&nbsp;
+                              <input type="text" id="datepicker_end" name="datepicker_end" placeholder="締切日付を選択" class="form-control" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group mb-0 mt-3 text-right">
+                    <button type="submit" class="btn btn-info waves-effect waves-light ">検索</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- user deatails table -->
+        <div class="data-table">
+          <div class="row">
+            <div class="col-lg-12 col-sm-12">
+              <div class="card m-b-30">
+                <div class="card-body table-responsive">
+                  <h5 class="header-title mb-3">検索結果</h5>
+                  <div class="table-odd">
+                    <div id="datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <table id="datatable" class="table table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                            <thead>
+                              <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">登録日時</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">更新日時</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">入力担当</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="">詳細</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr role="row" class="odd">
+                                <td class="sorting_1">2022/8/1 14:32</td>
+                                <td>2022/8/3 12:21</td>
+                                <td>佐藤 花子</td>
+                                <td>
+                                  <a href="#" data-toggle="modal" data-target=".assessment_modal" class="">詳細</a>
+                                  <div class="assessment_modal modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title">ダミー項目</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <div class="col-md-12">
+                                            <div class="presonal-information">
+                                              <h6 class="user_info_sub_title">心疾患</h6>
+                                              <div class="row">
+                                                <div class="col-lg-12">
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">息苦しさを感じる</div>
+                                                    <div class="right-col">声を出して肺活量を鍛える、 筋肉量を増やしたい、 筋肉を柔らかくする
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">声がかすれる</div>
+                                                    <div class="right-col">声がしっかりでるようにしたい、のどに負担のかからない食事がとりたい
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">動くとすぐに息が上がる</div>
+                                                    <div class="right-col">筋肉量を増やしたい、声を出して肺活量を鍛える、体力のつく食事が作れるようになる
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">むくみがある</div>
+                                                    <div class="right-col">足の循環を良くしたい、物を使って全身の循環を良くする
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <hr>
+                                              </div>
+                                              <hr>
+                                              <h6 class="user_info_sub_title">認知症</h6>
+                                              <div class="row">
+                                                <div class="col-lg-12">
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">物忘れが増えた</div>
+                                                    <div class="right-col">漢字の読み書き・計算ができるようになる、 忘れないようにメモがとれるようになりたい、集中して物事に取り組みたい、他者と関わりながら取り組みがしたい
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">理解力・判断力の低下</div>
+                                                    <div class="right-col">漢字の読み書き・計算ができるようになる、知識を広めたい、静かなところで細かい作業がしたい
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">時間・場所がわからなくなる</div>
+                                                    <div class="right-col">時間や文字を忘れないようにしたい、自分のいる場所が把握したい、外での場所がわかるようになりたい
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">身の回りのことができなくなる</div>
+                                                    <div class="right-col">読み書きができるようになりたい、デジタル機器がつかえるようになりたい、細かい作業ができるようになる、外に出て気分転換がしたい
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <hr>
+                                              </div>
+                                              <hr>
+                                              <h6 class="user_info_sub_title">生活習慣病</h6>
+                                              <div class="row">
+                                                <div class="col-lg-12">
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">ご飯がおいしくない</div>
+                                                    <div class="right-col">食事で栄養の偏りがないように献立を考える、好き嫌いが多いので食べれる物を増やす、お腹が空くように体をうごかしたい。
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">運動不足</div>
+                                                    <div class="right-col">活動量を増やす、ストレッチしながら体を動かす、室内で気軽に運動できる
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">ストレスを抱えている</div>
+                                                    <div class="right-col">声を出してストレス発散、歌を聞いてストレス発散、外に出て気分転換、身体を動かしてしてストレス発散
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <hr>
+                                              </div>
+                                              <hr>
+                                              <h6 class="user_info_sub_title">運動系疾患</h6>
+                                              <div class="row">
+                                                <div class="col-lg-12">
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">足があがらない</div>
+                                                    <div class="right-col">筋肉量を増やしたい、筋肉の使い方を上手になりたい、足関節を柔らかくしたい、筋力をつけたい
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">腕が上がらない</div>
+                                                    <div class="right-col">腕が振れるようになりたい、筋肉の使い方を上手になりたい、関節を柔らかくしたい
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">転ぶことが増えた</div>
+                                                    <div class="right-col">筋肉量を増やしたい、筋肉の使い方を上手になりたい、足関節を柔らかくしたい、運動をしながら改善した
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">腰が痛い</div>
+                                                    <div class="right-col">関節を柔らかくしたい、腰を伸ばす運動がしたい、
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <hr>
+                                              </div>
+                                              <hr>
+                                              <h6 class="user_info_sub_title">肺疾患</h6>
+                                              <div class="row">
+                                                <div class="col-lg-12">
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">動くとすぐに息が上がる</div>
+                                                    <div class="right-col">声を出して肺活量を鍛える、筋肉量を増やしたい、体力のつく食事が作れるようになる
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">息苦しさを感じる</div>
+                                                    <div class="right-col">声を出して肺活量を鍛える、肺活量を鍛えたい
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">痰が絡んだ咳が出る</div>
+                                                    <div class="right-col">声を出して肺活量を鍛える
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">呼吸をするときにヒューヒュー・ゼーゼーなる</div>
+                                                    <div class="right-col">声を出して肺活量を鍛える
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <hr>
+                                              </div>
+                                              <hr>
+                                              <h6 class="user_info_sub_title">精神疾患</h6>
+                                              <div class="row">
+                                                <div class="col-lg-12">
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">感情のコントロールが難しい</div>
+                                                    <div class="right-col">感情を抑えたい、心をおちつかせて過ごしたい、ストレスが溜まらないようにしたい
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">集中して物事に取り組めない</div>
+                                                    <div class="right-col">細かい作業で集中力をつけたい、体を動かしながら集中したい、打ち込むことが欲しい
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">ぼーっとなることがある</div>
+                                                    <div class="right-col">寝つきが悪い
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <hr>
+                                              </div>
+                                              <hr>
+                                              <h6 class="user_info_sub_title">脳疾患</h6>
+                                              <div class="row">
+                                                <div class="col-lg-12">
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">身体の動きが悪い</div>
+                                                    <div class="right-col">筋肉量を増やしたい、関節が固まらないようにしたい、関節の可動域を広げたい
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">物が見えにくい</div>
+                                                    <div class="right-col">動くものをみえるようになる、小さいものが把握できるようになる、字が把握できるようになる、ビタミン不足を補う食事がしたい
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">言葉がうまくでない</div>
+                                                    <div class="right-col">声を出して肺活量を鍛える、声をだせるように練習したい、言葉をわすれないようにしたい
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">バランスがとりにくい</div>
+                                                    <div class="right-col">筋肉の使い方を練習したい、筋肉を柔らかく使いたい、横への転倒を減らしたい、上肢を柔らかくしたい
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <hr>
+                                              </div>
+                                              <hr>
+                                              <h6 class="user_info_sub_title">神経疾患</h6>
+                                              <div class="row">
+                                                <div class="col-lg-12">
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">手のしびれ</div>
+                                                    <div class="right-col">細かい作業ができるようになりたい、手先の感覚を忘れないようにしたい
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">手の震え</div>
+                                                    <div class="right-col">細かい作業ができるようになる、正確な作業ができる、手が震えても字が書きたい
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">足がでにくい</div>
+                                                    <div class="right-col">筋肉の使い方を上手になりたい、伝え歩きができる、筋肉の使い方を上手になりたい
+                                                    </div>
+                                                  </div>
+                                                  <div class="assesment_flex d-flex mb-2">
+                                                    <div class="left-col">腰が痛い</div>
+                                                    <div class="right-col">腰痛を改善
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <hr>
+                                              </div>
+                                              <hr>
+                                              <h6 class="user_info_sub_title">リハビリ中の注意事項:</h6>
+                                              <p class="text-333">これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。</p>
+                                              <h6 class="user_info_sub_title">入浴中の注意事項:</h6>
+                                              <p class="text-333">これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。</p>
+                                              <h6 class="user_info_sub_title">備考:</h6>
+                                              <p class="text-333">これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。</p>
+                                            </div>
+                                          </div>
+                                          <div class="modal-footer justify-content-between">
+                                            <div class="button_list">
+                                              <button type="button" class="btn btn-primary">アセスメント変更</button>
+                                            </div>
+                                            <div class="button_list">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </td>
+                              </tr>
+                              <tr role="row" class="even">
+                                <td class="sorting_1">2022/9/1 11:00</td>
+                                <td>-</td>
+                                <td>佐藤 花子</td>
+                                <td>
+                                  <a href="#" data-toggle="modal" data-target=".assessment_modal" class="">詳細</a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--end row-->
+          </div>
+        </div>
+        <!--end container-->
+        <!--footer section start-->
+        <footer class="footer">
+          2022 &copy; リハビリメニュー管理
+        </footer>
+        <!--footer section end-->
+        <!-- Right Slidebar start -->
+        <!--end Right Slidebar-->
+      </div>
+      <!--end body content-->
+  </section>
+
+
+
+  <!-- jQuery -->
+  <script src="assets/js/jquery-3.2.1.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery-migrate.js"></script>
+  <script src="assets/js/modernizr.min.js"></script>
+  <script src="assets/js/jquery.slimscroll.min.js"></script>
+  <script src="assets/js/slidebars.min.js"></script>
+  <!-- Parsley js -->
+  <script type="text/javascript" src="assets/plugins/parsleyjs/dist/parsley.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('form').parsley();
+    });
+  </script>
+  <!-- Responsive and datatable js -->
+  <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="assets/plugins/datatables/dataTables.responsive.min.js"></script>
+  <script src="assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+  <!--app js-->
+  <!-- Sweet Alert Js  -->
+  <script src="assets/plugins/sweet-alert/sweetalert2.min.js"></script>
+  <script src="assets/pages/jquery.sweet-alert.init.js"></script>
+  <script src="assets/js/jquery.app.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#datatable').DataTable();
+    });
+  </script>
+  <script src="assets/plugins/dropify/js/dropify.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Basic
+      $('.dropify').dropify();
+
+      // Translated
+      $('.dropify-fr').dropify({
+        messages: {
+          default: 'Glissez-déposez un fichier ici ou cliquez',
+          replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+          remove: 'Supprimer',
+          error: 'Désolé, le fichier trop volumineux'
+        }
+      });
+
+      // Used events
+      var drEvent = $('#input-file-events').dropify();
+
+      drEvent.on('dropify.beforeClear', function(event, element) {
+        return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+      });
+
+      drEvent.on('dropify.afterClear', function(event, element) {
+        alert('File deleted');
+      });
+
+      drEvent.on('dropify.errors', function(event, element) {
+        console.log('Has Errors');
+      });
+
+      var drDestroy = $('#input-file-to-destroy').dropify();
+      drDestroy = drDestroy.data('dropify')
+      $('#toggleDropify').on('click', function(e) {
+        e.preventDefault();
+        if (drDestroy.isDropified()) {
+          drDestroy.destroy();
+        } else {
+          drDestroy.init();
+        }
+      })
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script>
+    $(function() {
+      $("#datepicker_start").datepicker({
+        prevText: "前月",
+        nextText: "次月",
+        monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        monthNamesShort: ["１月", "２月", "３月", "４月", "５月", "６月", "７月", "８月", "９月", "１０月", "１１月", "１２月"],
+        dayNames: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+        dayNamesShort: ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"],
+        dayNamesMin: ["日", "月", "火", "水", "木", "金", "土"],
+        weekHeader: "周",
+        showWeek: false,
+        dateFormat: "yy年mm月dd日",
+        firstDay: 0 /* 週の開始を日曜にする */ ,
+        isRTL: false,
+        showMonthAfterYear: true,
+        yearSuffix: "年",
+        showButtonPanel: true,
+        closeText: "閉じる",
+        currentText: "今日"
+      });
+
+      $("#datepicker_end").datepicker({
+        prevText: "前月",
+        nextText: "次月",
+        monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        monthNamesShort: ["１月", "２月", "３月", "４月", "５月", "６月", "７月", "８月", "９月", "１０月", "１１月", "１２月"],
+        dayNames: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+        dayNamesShort: ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"],
+        dayNamesMin: ["日", "月", "火", "水", "木", "金", "土"],
+        weekHeader: "周",
+        showWeek: false,
+        dateFormat: "yy年mm月dd日",
+        firstDay: 0 /* 週の開始を日曜にする */ ,
+        isRTL: false,
+        showMonthAfterYear: true,
+        yearSuffix: "年",
+        showButtonPanel: true,
+        closeText: "閉じる",
+        currentText: "今日"
+      });
+      $(".print_show_section").hide();
+
+      $("#year").change(function() {
+        var $year = $("#year").val();
+        var $month = $("#month").val();
+        if (($year !== "") && ($month !== "")) {
+          $('.invoice_year').empty().append($year);
+          $('.invoice_month').empty().append($month);
+          if ($month == "1") {
+            $('.receipt_year').empty().append($year - 1);
+            $('.receipt_month').empty().append("12");
+          } else {
+            $('.receipt_year').empty().append($year);
+            $('.receipt_month').empty().append($month - 1);
+          }
+          $(".print_show_section").show();
+        } else {
+          $(".print_show_section").hide();
+        }
+      });
+      $("#month").change(function() {
+        var $year = $("#year").val();
+        var $month = $("#month").val();
+        if (($year !== "") && ($month !== "")) {
+          $('.invoice_year').empty().append($year);
+          $('.invoice_month').empty().append($month);
+          if ($month == "1") {
+            $('.receipt_year').empty().append($year - 1);
+            $('.receipt_month').empty().append("12");
+          } else {
+            $('.receipt_year').empty().append($year);
+            $('.receipt_month').empty().append($month - 1);
+          }
+          $(".print_show_section").show();
+        } else {
+          $(".print_show_section").hide();
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

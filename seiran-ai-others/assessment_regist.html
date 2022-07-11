@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keyword" content="">
+  <title>リハビリメニュー管理</title>
+  <!-- Theme icon -->
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
+  <!-- Responsive and DataTables -->
+  <link href="assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/morris-chart/morris.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+  <!-- Sweet Alert css -->
+  <link href="assets/plugins/sweet-alert/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/dropify/css/dropify.min.css" rel="stylesheet">
+  <!-- Theme Css -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/slidebars.min.css" rel="stylesheet">
+  <link href="assets/css/icons.css" rel="stylesheet">
+  <link href="assets/css/menu.css" rel="stylesheet" type="text/css">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body class="sticky-header">
+  <section>
+    <!-- sidebar left start-->
+
+    <!-- sidebar left end-->
+
+    <!-- body content start-->
+    <div class="body-content no-sidebar">
+      <!-- header section start-->
+      <div class="header-section">
+        <!--logo and logo icon start-->
+        <div class="logo">
+          <a href="index.html">
+            <span class="logo-img"><img src="assets/images/logo_sm.png" alt="" height="26"></span>
+            <!--<i class="fa fa-maxcdn"></i>-->
+            <span class="brand-name">リハビリメニュー管理</span>
+          </a>
+        </div>
+        <!--toggle button start-->
+
+        <!--toggle button end-->
+        <!--mega menu start-->
+        <div id="navbar-collapse-1" class="navbar-collapse collapse mega-menu">
+          <ul class="nav navbar-nav">
+            <!-- Classic dropdown -->
+            <li class="facility_text">
+              対象施設名：
+            </li>
+            <li class="dropdown">
+              <a href="javascript:;" data-toggle="dropdown" class="" aria-expanded="false"> 未選択 <i class="mdi mdi-chevron-down"></i> </a>
+              <ul role="menu" class="dropdown-menu language-switch" x-placement="bottom-start">
+                <li>
+                  <a href="javascript:;"> リハビリ施設A </a>
+                </li>
+                <li>
+                  <a href="javascript:;"> リハビリ施設B </a>
+                </li>
+                <li>
+                  <a href="javascript:;"> リハビリ施設C </a>
+                </li>
+                <li>
+                  <a href="javascript:;"> リハビリ施設D </a>
+                </li>
+                <li>
+                  <a href="javascript:;"> リハビリ施設E </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!--mega menu end-->
+        <div class="notification-wrap">
+          <!--right notification start-->
+          <div class="right-notification">
+            <ul class="notification-menu">
+              <li>
+                <div class="d-flex align-items-center ml-4">
+                  <div class="people_name">山田　太郎（職員）</div>
+                  <a href="javascript:;" data-toggle="dropdown">
+                    <i class="mdi mdi-settings m-r-5 text-muted"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right profile-menu">
+                    <a class="dropdown-item" href="#"><i class="mdi mdi-logout m-r-5 text-muted"></i> ログアウト</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!--right notification end-->
+        </div>
+      </div>
+      <!-- header section end-->
+      <div class="container-fluid">
+        <div class="page-head row">
+          <div class="col-sm-12 col-md-6">
+            <h4 class="mt-2 mb-2">アセスメント新規登録　山田 太郎様（00012345）</h4>
+          </div>
+          <div class="col-sm-12 col-md-6 new_invoice_btn_wrap">
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target=".close_alert_modal">このウィンドウを閉じる</button>
+          </div>
+          <div class="modal fade close_alert_modal" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  <p>このウィンドウを閉じますがよろしいですか？（保存していない内容は破棄されます）</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" onclick="window.close(); ">OK</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3 class="text-muted pl-3 mt-3 mb-3 text-center">基本情報</h3>
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="card m-b-30">
+              <div class="card-body">
+                <form class="assessment_regist_form" action="#">
+                  <div class="form-group">
+                    <a href="#collapse1" data-toggle="collapse" class="collapsed " aria-expanded="false">心疾患</a>
+                    <div id="collapse1" class="collapse">
+                      <div class="item">
+                        <a href="#collapse11" data-toggle="collapse" class="collapsed" aria-expanded="false">息苦しさを感じる</a>
+                        <div id="collapse11" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>声を出して肺活量を鍛える</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>筋肉量を増やしたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>筋肉を柔らかくする</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse12" data-toggle="collapse" class="collapsed" aria-expanded="false">声がかすれる</a>
+                        <div id="collapse12" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>声がしっかりでるようにしたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>のどに負担のかからない食事がとりたい</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse13" data-toggle="collapse" class="collapsed" aria-expanded="false">動くとすぐに息が上がる</a>
+                        <div id="collapse13" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>筋肉量を増やしたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>声を出して肺活量を鍛える</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>体力のつく食事が作れるようになる</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse14" data-toggle="collapse" class="collapsed" aria-expanded="false">むくみがある</a>
+                        <div id="collapse14" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>足の循環を良くしたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>物を使って全身の循環を良くする</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="form-group">
+                    <a href="#collapse2" data-toggle="collapse" class="collapsed " aria-expanded="false">認知症</a>
+                    <div id="collapse2" class="collapse">
+                      <div class="item">
+                        <a href="#collapse21" data-toggle="collapse" class="collapsed" aria-expanded="false">息苦しさを感じる</a>
+                        <div id="collapse21" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>漢字の読み書き・計算ができるようになる</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>忘れないようにメモがとれるようになりたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>集中して物事に取り組みたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>他者と関わりながら取り組みがしたい</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse22" data-toggle="collapse" class="collapsed" aria-expanded="false">理解力・判断力の低下</a>
+                        <div id="collapse22" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>漢字の読み書き・計算ができるようになる</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>知識を広めたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>静かなところで細かい作業がしたい</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse23" data-toggle="collapse" class="collapsed" aria-expanded="false">時間・場所がわからなくなる</a>
+                        <div id="collapse23" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>時間や文字を忘れないようにしたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>自分のいる場所が把握したい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>外での場所がわかるようになりたい</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse24" data-toggle="collapse" class="collapsed" aria-expanded="false">身の回りのことができなくなる</a>
+                        <div id="collapse24" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>読み書きができるようになりたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>デジタル機器がつかえるようになりたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>細かい作業ができるようになる</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>外に出て気分転換がしたい</label>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="form-group">
+                    <a href="#collapse3" data-toggle="collapse" class="collapsed " aria-expanded="false">生活習慣病</a>
+                    <div id="collapse3" class="collapse">
+                      <div class="item">
+                        <a href="#collapse31" data-toggle="collapse" class="collapsed" aria-expanded="false">ご飯がおいしくない</a>
+                        <div id="collapse31" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>食事で栄養の偏りがないように献立を考える</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>好き嫌いが多いので食べれる物を増やす</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>お腹が空くように体をうごかしたい。</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse32" data-toggle="collapse" class="collapsed" aria-expanded="false">運動不足</a>
+                        <div id="collapse32" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>活動量を増やす</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ストレッチしながら体を動かす</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>室内で気軽に運動できる</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>楽しみながら体を動かす</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse33" data-toggle="collapse" class="collapsed" aria-expanded="false">ストレスを抱えている</a>
+                        <div id="collapse33" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>声を出してストレス発散</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>歌を聞いてストレス発散</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>外に出て気分転換</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>身体を動かしてしてストレス発散</label>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="form-group">
+                    <a href="#collapse4" data-toggle="collapse" class="collapsed " aria-expanded="false">運動系疾患</a>
+                    <div id="collapse4" class="collapse">
+                      <div class="item">
+                        <a href="#collapse41" data-toggle="collapse" class="collapsed" aria-expanded="false">足があがらない</a>
+                        <div id="collapse41" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>筋肉量を増やしたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>筋肉の使い方を上手になりたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>足関節を柔らかくしたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>筋力をつけたい</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse42" data-toggle="collapse" class="collapsed" aria-expanded="false">腕が上がらない</a>
+                        <div id="collapse42" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>腕が振れるようになりたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>筋肉の使い方を上手になりたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>関節を柔らかくしたい</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse43" data-toggle="collapse" class="collapsed" aria-expanded="false">転ぶことが増えた</a>
+                        <div id="collapse43" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>筋肉量を増やしたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>筋肉の使い方を上手になりたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>足関節を柔らかくしたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>運動をしながら改善したい</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse44" data-toggle="collapse" class="collapsed" aria-expanded="false">腰が痛い</a>
+                        <div id="collapse44" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>関節を柔らかくしたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>腰を伸ばす運動がしたい</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="form-group">
+                    <a href="#collapse5" data-toggle="collapse" class="collapsed " aria-expanded="false">肺疾患</a>
+                    <div id="collapse5" class="collapse">
+                      <div class="item">
+                        <a href="#collapse51" data-toggle="collapse" class="collapsed" aria-expanded="false">動くとすぐに息が上がる</a>
+                        <div id="collapse51" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>声を出して肺活量を鍛える</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>筋肉量を増やしたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>体力のつく食事が作れるようになる</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse52" data-toggle="collapse" class="collapsed" aria-expanded="false">息苦しさを感じる</a>
+                        <div id="collapse52" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>声を出して肺活量を鍛える</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>肺活量を鍛えたい</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse53" data-toggle="collapse" class="collapsed" aria-expanded="false">痰が絡んだ咳が出る</a>
+                        <div id="collapse53" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>声を出して肺活量を鍛える</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse54" data-toggle="collapse" class="collapsed" aria-expanded="false">呼吸をするときに<br>ヒューヒュー・ゼーゼーなる</a>
+                        <div id="collapse54" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>声を出して肺活量を鍛える</label>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="form-group">
+                    <a href="#collapse6" data-toggle="collapse" class="collapsed " aria-expanded="false">精神疾患</a>
+                    <div id="collapse6" class="collapse">
+                      <div class="item">
+                        <a href="#collapse61" data-toggle="collapse" class="collapsed" aria-expanded="false">感情のコントロールが難しい</a>
+                        <div id="collapse61" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>感情を抑えたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>心をおちつかせて過ごしたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ストレスが溜まらないようにしたい</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse62" data-toggle="collapse" class="collapsed" aria-expanded="false">集中して物事に取り組めない</a>
+                        <div id="collapse62" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>細かい作業で集中力をつけたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>体を動かしながら集中したい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>打ち込むことが欲しい</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse63" data-toggle="collapse" class="collapsed" aria-expanded="false">ぼーっとなることがある</a>
+                        <div id="collapse63" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>寝つきが悪い</label>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="form-group">
+                    <a href="#collapse7" data-toggle="collapse" class="collapsed " aria-expanded="false">脳疾患</a>
+                    <div id="collapse7" class="collapse">
+                      <div class="item">
+                        <a href="#collapse71" data-toggle="collapse" class="collapsed" aria-expanded="false">身体の動きが悪い</a>
+                        <div id="collapse71" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>筋肉量を増やしたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>関節が固まらないようにしたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>関節の可動域を広げたい</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse72" data-toggle="collapse" class="collapsed" aria-expanded="false">物が見えにくい</a>
+                        <div id="collapse72" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>動くものをみえるようになる</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>小さいものが把握できるようになる</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>字が把握できるようになる</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ビタミン不足を補う食事がしたい</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse73" data-toggle="collapse" class="collapsed" aria-expanded="false">言葉がうまくでない</a>
+                        <div id="collapse73" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>声を出して肺活量を鍛える</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>声をだせるように練習したい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>言葉をわすれないようにしたい</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse74" data-toggle="collapse" class="collapsed" aria-expanded="false">バランスがとりにくい</a>
+                        <div id="collapse74" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>筋肉の使い方を練習したい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>筋肉を柔らかく使いたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>横への転倒を減らしたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>上肢を柔らかくしたい</label>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="form-group">
+                    <a href="#collapse8" data-toggle="collapse" class="collapsed " aria-expanded="false">神経疾患</a>
+                    <div id="collapse8" class="collapse">
+                      <div class="item">
+                        <a href="#collapse81" data-toggle="collapse" class="collapsed" aria-expanded="false">手のしびれ</a>
+                        <div id="collapse81" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>細かい作業ができるようになりたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>手先の感覚を忘れないようにしたい</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse82" data-toggle="collapse" class="collapsed" aria-expanded="false">手の震え</a>
+                        <div id="collapse82" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>細かい作業ができるようになる</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>正確な作業ができる</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>手が震えても字が書きたい</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse83" data-toggle="collapse" class="collapsed" aria-expanded="false">足がでにくい</a>
+                        <div id="collapse83" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>筋肉の使い方を上手になりたい</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>伝え歩きができる</label>
+                          </div>
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>筋肉の使い方を上手になりたい</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <a href="#collapse84" data-toggle="collapse" class="collapsed" aria-expanded="false">腰が痛い</a>
+                        <div id="collapse84" class="collapse">
+                          <div class="checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>腰痛を改善</label>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="form-group mb-0 mt-3">
+                    <div>
+                      <button type="submit" class="btn btn-info waves-effect waves-light">登録</button>
+                      <button type="reset" class="btn btn-secondary waves-effect m-l-5">キャンセル</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- end col -->
+        </div>
+        <h3 class="text-muted pl-3 mt-3 mb-3 text-center">その他情報</h3>
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="card m-b-30">
+              <div class="card-body">
+                <form class="assessment_regist_form" action="#">
+                  <div class="mb-2">リハビリ中の注意事項:</div>
+                  <textarea class="precautions" name="" id="" rows="5"></textarea>
+                  <div class="mt-3 mb-2">入浴中の注意事項:</div>
+                  <textarea class="precautions" name="" id="" rows="5"></textarea>
+                  <div class="mt-3 mb-2">備考:</div>
+                  <textarea class="precautions" name="" id="" rows="5"></textarea>
+                  <div class="form-group mb-0 mt-3">
+                    <div>
+                      <button type="submit" class="btn btn-info waves-effect waves-light">登録</button>
+                      <button type="reset" class="btn btn-secondary waves-effect m-l-5">キャンセル</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- end col -->
+        </div>
+      </div>
+      <!--end container-->
+      <!--footer section start-->
+      <footer class="footer">
+        2022 &copy; リハビリメニュー管理
+      </footer>
+      <!--footer section end-->
+      <!-- Right Slidebar start -->
+      <!--end Right Slidebar-->
+    </div>
+    <!--end body content-->
+  </section>
+
+
+
+  <!-- jQuery -->
+  <script src="assets/js/jquery-3.2.1.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery-migrate.js"></script>
+  <script src="assets/js/modernizr.min.js"></script>
+  <script src="assets/js/jquery.slimscroll.min.js"></script>
+  <script src="assets/js/slidebars.min.js"></script>
+  <!-- Parsley js -->
+  <script type="text/javascript" src="assets/plugins/parsleyjs/dist/parsley.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('form').parsley();
+    });
+  </script>
+  <!-- Responsive and datatable js -->
+  <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="assets/plugins/datatables/dataTables.responsive.min.js"></script>
+  <script src="assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+  <!--app js-->
+  <!-- Sweet Alert Js  -->
+  <script src="assets/plugins/sweet-alert/sweetalert2.min.js"></script>
+  <script src="assets/pages/jquery.sweet-alert.init.js"></script>
+  <script src="assets/js/jquery.app.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#datatable').DataTable();
+    });
+  </script>
+  <script src="assets/plugins/dropify/js/dropify.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Basic
+      $('.dropify').dropify();
+
+      // Translated
+      $('.dropify-fr').dropify({
+        messages: {
+          default: 'Glissez-déposez un fichier ici ou cliquez',
+          replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+          remove: 'Supprimer',
+          error: 'Désolé, le fichier trop volumineux'
+        }
+      });
+
+      // Used events
+      var drEvent = $('#input-file-events').dropify();
+
+      drEvent.on('dropify.beforeClear', function(event, element) {
+        return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+      });
+
+      drEvent.on('dropify.afterClear', function(event, element) {
+        alert('File deleted');
+      });
+
+      drEvent.on('dropify.errors', function(event, element) {
+        console.log('Has Errors');
+      });
+
+      var drDestroy = $('#input-file-to-destroy').dropify();
+      drDestroy = drDestroy.data('dropify')
+      $('#toggleDropify').on('click', function(e) {
+        e.preventDefault();
+        if (drDestroy.isDropified()) {
+          drDestroy.destroy();
+        } else {
+          drDestroy.init();
+        }
+      })
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script>
+    $(function() {
+      $("#datepicker_start").datepicker({
+        prevText: "前月",
+        nextText: "次月",
+        monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        monthNamesShort: ["１月", "２月", "３月", "４月", "５月", "６月", "７月", "８月", "９月", "１０月", "１１月", "１２月"],
+        dayNames: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+        dayNamesShort: ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"],
+        dayNamesMin: ["日", "月", "火", "水", "木", "金", "土"],
+        weekHeader: "周",
+        showWeek: false,
+        dateFormat: "yy年mm月dd日",
+        firstDay: 0 /* 週の開始を日曜にする */ ,
+        isRTL: false,
+        showMonthAfterYear: true,
+        yearSuffix: "年",
+        showButtonPanel: true,
+        closeText: "閉じる",
+        currentText: "今日"
+      });
+
+      $("#datepicker_end").datepicker({
+        prevText: "前月",
+        nextText: "次月",
+        monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        monthNamesShort: ["１月", "２月", "３月", "４月", "５月", "６月", "７月", "８月", "９月", "１０月", "１１月", "１２月"],
+        dayNames: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+        dayNamesShort: ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"],
+        dayNamesMin: ["日", "月", "火", "水", "木", "金", "土"],
+        weekHeader: "周",
+        showWeek: false,
+        dateFormat: "yy年mm月dd日",
+        firstDay: 0 /* 週の開始を日曜にする */ ,
+        isRTL: false,
+        showMonthAfterYear: true,
+        yearSuffix: "年",
+        showButtonPanel: true,
+        closeText: "閉じる",
+        currentText: "今日"
+      });
+      $(".print_show_section").hide();
+
+    });
+    $(".collapsed").prepend('<i class="fa fa-plus"></i>&nbsp;&nbsp;');
+    $(".collapsed").click(function() {
+      if ($(this).children().hasClass('fa-plus') == true) {
+        $(this).find(".fa-plus").removeClass('fa-plus').addClass('fa-minus');
+      } else {
+        $(this).find(".fa-minus").removeClass('fa-minus').addClass('fa-plus');
+      }
+    });
+  </script>
+
+
+</body>
+
+
+</html>

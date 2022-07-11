@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keyword" content="">
+  <title>ハートID 管理システム</title>
+  <!-- Theme icon -->
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
+  <!-- Responsive and DataTables -->
+  <link href="assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/morris-chart/morris.css" rel="stylesheet">
+  <!-- Sweet Alert css -->
+  <link href="assets/plugins/sweet-alert/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+  <!-- Theme Css -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/slidebars.min.css" rel="stylesheet">
+  <link href="assets/css/icons.css" rel="stylesheet">
+  <link href="assets/css/menu.css" rel="stylesheet" type="text/css">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body class="sticky-header">
+  <section>
+    <!-- sidebar left start-->
+    <div class="sidebar-left">
+      <div class="sidebar-left-info">
+        <!--sidebar nav start-->
+        <ul class="side-navigation">
+          <li class="active text-center">
+            <a href="member-search.html"><i class="mdi mdi-account-search" style="font-size: 40px;"></i>
+              <div>ユーザ検索</div>
+            </a>
+          </li>
+          <li class="text-center">
+            <a href="unchecked-regist.html"><i class="mdi mdi-account-off" style="font-size: 40px;"></i>
+              <div>未チェック登録者</div>
+            </a>
+          </li>
+          <li class="text-center">
+            <a href="ic-card-page.html"><i class="mdi mdi-account-card-details"></i>
+              <div>ICカード読み取り</div>
+            </a>
+          </li>
+          <li class="text-center">
+            <a href="member-service-search.html"><i class="ti-search"></i>
+              <div>サービス別利用者</div>
+            </a>
+          </li>
+          <li class="text-center">
+            <a href="device-management.html"><i class="ti-desktop"></i>
+              <div>端末管理</div>
+            </a>
+          </li>
+          <li class="text-center">
+            <a href="user-service-management.html"><i class="mdi mdi-account-settings-variant"
+                style="font-size: 40px;"></i>
+              <div>利用サービス管理</div>
+            </a>
+          </li>
+          <li class="text-center">
+            <a href="permission-setting.html"><i class="mdi mdi-account-key" style="font-size: 40px;"></i>
+              <div>権限設定</div>
+            </a>
+          </li>
+        </ul>
+        <!--sidebar nav end-->
+      </div>
+    </div>
+    <!-- sidebar left end-->
+    <!-- body content start-->
+    <div class="body-content">
+      <!-- header section start-->
+      <div class="header-section">
+        <!--logo and logo icon start-->
+        <div class="logo">
+          <a href="index.html">
+            <span class="logo-img"><img src="assets/images/logo_sm.png" alt="" height="26"></span>
+            <!--<i class="fa fa-maxcdn"></i>-->
+            <span class="brand-name">ハートID</span>
+          </a>
+        </div>
+        <!--toggle button start-->
+        <a class="toggle-btn"><i class="ti ti-menu"></i></a>
+        <!--toggle button end-->
+        <!--mega menu start-->
+        <div id="navbar-collapse-1" class="navbar-collapse collapse mega-menu">
+          <ul class="nav navbar-nav">
+            <!-- Classic dropdown -->
+            <!-- Classic list -->
+          </ul>
+        </div>
+        <!--mega menu end-->
+        <div class="notification-wrap">
+          <!--right notification start-->
+          <div class="right-notification">
+            <ul class="notification-menu">
+              <li>
+                <button type="button" class="btn mdi btn-danger">カードリーダーを接続</button>
+              </li>
+              <li>
+                <div class="d-flex align-items-center ml-4">
+                  <div class="people_name">山田　太郎（職員）</div>
+                  <a href="javascript:;" data-toggle="dropdown">
+                    <i class="mdi mdi-settings m-r-5 text-muted"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right profile-menu">
+                    <a class="dropdown-item" href="#"><i class="mdi mdi-logout m-r-5 text-muted"></i> ログアウト</a>
+                  </div>
+                </div>
+
+              </li>
+            </ul>
+          </div>
+          <!--right notification end-->
+        </div>
+      </div>
+      <!-- header section end-->
+      <div class="container-fluid">
+        <div class="page-head">
+          <h4 class="mt-2 mb-2">ユーザ検索</h4>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card m-b-30">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-8 free_keyword_wrap mb-3">
+                    <div class="d-lg-flex align-items-center justify-content-between">
+                      <div class="text mb-2 mb-lg-0 ">フリーワード</div>
+                      <input type="search" class="form-control form-control-sm" placeholder="">
+                      <label class="cr-styled ml-0 ml-lg-3 mt-2 mt-lg-0"><input type="checkbox"><i
+                          class="fa"></i>あいまい検索</label>
+                    </div>
+                  </div>
+                </div>
+                <form class="" action="" novalidate="">
+                  <div class="row main_search">
+                    <div class="col-lg-3 mt-2 mb-2">
+                      <div class="search_title mb-1">ハートID</div>
+                      <input type="search" class="form-control form-control-sm" placeholder="">
+                    </div>
+                    <div class="col-lg-3 mt-2 mb-2">
+                      <div class="search_title mb-1">氏名</div>
+                      <input type="search" class="form-control form-control-sm" placeholder="">
+                    </div>
+                    <div class="col-lg-3 mt-2 mb-2">
+                      <div class="search_title mb-1">電話番号</div>
+                      <input type="search" class="form-control form-control-sm" placeholder="">
+                    </div>
+                    <div class="col-lg-3 mt-2 mb-2">
+                      <div class="search_title mb-1">メールアドレス</div>
+                      <input type="search" class="form-control form-control-sm" placeholder="">
+                    </div>
+                  </div>
+                  <div class="other_search pt-3">
+                    <a href="#other_serach_collapse" data-toggle="collapse">その他検索条件</a>
+                    <div class="collapse pt-3" id="other_serach_collapse">
+                      <div class="row">
+                        <div class="col-lg-3 mt-2 mb-2">
+                          <div class="search_title mb-1">医療保険</div>
+                          <input type="search" class="form-control form-control-sm" placeholder="">
+                        </div>
+                        <div class="col-lg-3 mt-2 mb-2">
+                          <div class="search_title mb-1">介護保険</div>
+                          <input type="search" class="form-control form-control-sm" placeholder="">
+                        </div>
+                        <div class="col-lg-3 mt-2 mb-2">
+                          <div class="search_title mb-1">wiseman介護のID</div>
+                          <input type="search" class="form-control form-control-sm" placeholder="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group mb-0 mt-3">
+                    <div class="d-flex align-items-center justify-content-end">
+                      <div class="no_data_search mr-2"><label class="cr-styled "><input type="checkbox"><i
+                            class="fa"></i>無効なデータも含めて検索する</label></div>
+                      <button type="submit" class="btn btn-info waves-effect waves-light ">検索</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- user deatails table -->
+        <div class="data-table">
+          <div class="row">
+            <div class="col-lg-12 col-sm-12">
+              <div class="card m-b-30">
+                <div class="card-body table-responsive">
+                  <h5 class="header-title mb-3">検索結果</h5>
+                  <div class="table-odd">
+                    <div id="datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <table id="datatable" class="table table-bordered dataTable no-footer" role="grid"
+                            aria-describedby="datatable_info">
+                            <thead>
+                              <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                                  aria-label="">ハートID</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                                  aria-label="">名前</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                                  aria-label="">フリガナ</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                                  aria-label="">性別</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                                  aria-label="">生年月日</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                                  aria-label="">メールアドレス</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                                  aria-label="">電話番号</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                                  aria-label="">詳細</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                                  aria-label="">無効</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr role="row" class="odd">
+                                <td class="sorting_1">000012345</td>
+                                <td>山田　太郎</td>
+                                <td>やまだ たろう</td>
+                                <td>男性</td>
+                                <td>1976/5/12 (45歳)</td>
+                                <td>heartid0003@co.jp</td>
+                                <td>090-0000-0000</td>
+                                <td>
+                                  <a href="#" data-toggle="modal" data-target=".user_info_modal" class="">詳細</a>
+                                  <div class="user_info_modal modal fade" tabindex="-1" role="dialog"
+                                    aria-labelledby="myLargeModalLabel" aria-hidden="true"></div>
+                                </td>
+                                <td>
+                                  <a href="#" data-toggle="modal" data-target=".disable_modal" class="">無効</a>
+                                  <div class="modal fade disable_modal" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          このデータを無効にしてよろしいですか？
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">はい</button>
+                                          <button type="button" class="btn btn-primary"
+                                            data-dismiss="modal">いいえ</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr role="row" class="even">
+                                <td class="sorting_1">000012345</td>
+                                <td>山田　太郎</td>
+                                <td>やまだ たろう</td>
+                                <td>男性</td>
+                                <td>1976/5/12 (45歳)</td>
+                                <td>heartid0003@co.jp</td>
+                                <td>090-0000-0000</td>
+                                <td>
+                                  <a href="#" data-toggle="modal" data-target=".user_info_modal" class="">詳細</a>
+                                  <div class="user_info_modal modal fade" tabindex="-1" role="dialog"
+                                    aria-labelledby="myLargeModalLabel" aria-hidden="true"></div>
+                                </td>
+                                <td>
+                                  <a href="#" data-toggle="modal" data-target=".enable_modal" class="">有効</a>
+                                  <div class="modal fade enable_modal" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          このデータを有効に戻してよろしいですか？
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">はい</button>
+                                          <button type="button" class="btn btn-primary"
+                                            data-dismiss="modal">いいえ</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end row-->
+        </div>
+        <div class="text-right">
+          <button type="button" class="btn btn-danger"
+            onclick="window.location.href='member-regist.html'">ユーザ新規登録</button>
+        </div>
+      </div>
+      <!--end container-->
+      <!--footer section start-->
+      <footer class="footer">
+        2022 &copy; ハートID
+      </footer>
+      <!--footer section end-->
+    </div>
+    <!--end body content-->
+  </section>
+  <!-- jQuery -->
+  <script src="assets/js/jquery-3.2.1.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery-migrate.js"></script>
+  <script src="assets/js/modernizr.min.js"></script>
+  <script src="assets/js/jquery.slimscroll.min.js"></script>
+  <script src="assets/js/slidebars.min.js"></script>
+  <!-- Parsley js -->
+  <script type="text/javascript" src="assets/plugins/parsleyjs/dist/parsley.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('form').parsley();
+    });
+  </script>
+  <!-- Responsive and datatable js -->
+  <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="assets/plugins/datatables/dataTables.responsive.min.js"></script>
+  <script src="assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+  <!--app js-->
+  <!-- Sweet Alert Js  -->
+  <script src="assets/plugins/sweet-alert/sweetalert2.min.js"></script>
+  <script src="assets/pages/jquery.sweet-alert.init.js"></script>
+  <script src="assets/js/jquery.app.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#datatable').DataTable();
+    });
+  </script>
+
+</body>
+
+</html>

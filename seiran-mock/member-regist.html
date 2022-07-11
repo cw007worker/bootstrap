@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keyword" content="">
+  <title>ハートID 管理システム</title>
+  <!-- Theme icon -->
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
+  <link href="assets/plugins/notifications/notification.css" rel="stylesheet" />
+  <!-- Responsive and DataTables -->
+  <link href="assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/morris-chart/morris.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+  <!-- Theme Css -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/slidebars.min.css" rel="stylesheet">
+  <link href="assets/css/icons.css" rel="stylesheet">
+  <link href="assets/css/menu.css" rel="stylesheet" type="text/css">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body class="sticky-header">
+  <section>
+    <!-- sidebar left start-->
+    <div class="sidebar-left">
+      <div class="sidebar-left-info">
+        <!--sidebar nav start-->
+        <ul class="side-navigation">
+          <li class="text-center">
+            <a href="member-search.html"><i class="mdi mdi-account-search" style="font-size: 40px;"></i>
+              <div>ユーザ検索</div>
+            </a>
+          </li>
+          <li class="text-center">
+            <a href="unchecked-regist.html"><i class="mdi mdi-account-off" style="font-size: 40px;"></i>
+              <div>未チェック登録者</div>
+            </a>
+          </li>
+          <li class="text-center">
+            <a href="ic-card-page.html"><i class="mdi mdi-account-card-details"></i>
+              <div>ICカード読み取り</div>
+            </a>
+          </li>
+          <li class="text-center">
+            <a href="member-service-search.html"><i class="ti-search"></i>
+              <div>サービス別利用者</div>
+            </a>
+          </li>
+          <li class="text-center">
+            <a href="device-management.html"><i class="ti-desktop"></i>
+              <div>端末管理</div>
+            </a>
+          </li>
+          <li class="text-center">
+            <a href="user-service-management.html"><i class="mdi mdi-account-settings-variant"
+                style="font-size: 40px;"></i>
+              <div>利用サービス管理</div>
+            </a>
+          </li>
+          <li class="text-center">
+            <a href="permission-setting.html"><i class="mdi mdi-account-key" style="font-size: 40px;"></i>
+              <div>権限設定</div>
+            </a>
+          </li>
+        </ul>
+        <!--sidebar nav end-->
+      </div>
+    </div>
+    <!-- sidebar left end-->
+    <!-- body content start-->
+    <div class="body-content">
+      <!-- header section start-->
+      <div class="header-section">
+        <!--logo and logo icon start-->
+        <div class="logo">
+          <a href="index.html">
+            <span class="logo-img"><img src="assets/images/logo_sm.png" alt="" height="26"></span>
+            <!--<i class="fa fa-maxcdn"></i>-->
+            <span class="brand-name">ハートID</span>
+          </a>
+        </div>
+        <!--toggle button start-->
+        <a class="toggle-btn"><i class="ti ti-menu"></i></a>
+        <!--toggle button end-->
+        <!--mega menu start-->
+        <div id="navbar-collapse-1" class="navbar-collapse collapse mega-menu">
+          <ul class="nav navbar-nav">
+            <!-- Classic dropdown -->
+            <!-- Classic list -->
+          </ul>
+        </div>
+        <!--mega menu end-->
+        <div class="notification-wrap">
+          <!--right notification start-->
+          <div class="right-notification">
+            <ul class="notification-menu">
+              <li>
+                <button type="button" class="btn mdi btn-danger">カードリーダーを接続</button>
+              </li>
+              <li>
+                <div class="d-flex align-items-center ml-4">
+                  <div class="people_name">山田　太郎（職員）</div>
+                  <a href="javascript:;" data-toggle="dropdown">
+                    <i class="mdi mdi-settings m-r-5 text-muted"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right profile-menu">
+                    <a class="dropdown-item" href="#"><i class="mdi mdi-logout m-r-5 text-muted"></i> ログアウト</a>
+                  </div>
+                </div>
+
+              </li>
+            </ul>
+          </div>
+          <!--right notification end-->
+        </div>
+      </div>
+      <!-- header section end-->
+      <div class="container-fluid">
+        <div class="page-head">
+          <h4 class="mt-2 mb-2">ユーザ登録</h4>
+        </div>
+        <h3 class="text-muted pl-3 mt-3 mb-3 text-center">基本情報</h3>
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="card m-b-30">
+              <div class="card-body">
+                <form class="" action="#">
+                  <div class="form-group">
+                    <label>ハートID</label>
+                    <input type="number" class="form-control" disabled placeholder="システムで自動採番される" />
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-lg-4">
+                      <label>名前：姓<span class="star">*</span></label><span class="required">必須</span>
+                      <input type="text" class="form-control" required placeholder="名前：姓" />
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label>名前：名<span class="star">*</span></label><span class="required">必須</span>
+                      <input type="text" class="form-control" required placeholder="名前：名" />
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label>名前：旧姓</label><span class="general">任意</span>
+                      <input type="text" class="form-control" placeholder="名前：旧姓">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-lg-4">
+                      <label>フリガナ：姓<span class="star">*</span></label><span class="required">必須</span>
+                      <input type="text" class="form-control" required placeholder="フリガナ：姓" />
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label>フリガナ：名<span class="star">*</span></label><span class="required">必須</span>
+                      <input type="text" class="form-control" required placeholder="フリガナ：名" />
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label>フリガナ：旧姓</label><span class="general">任意</span>
+                      <input type="text" class="form-control" placeholder="フリガナ：旧姓">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-lg-4">
+                      <label>国籍<span class="star">*</span></label><span class="required">必須</span>
+                      <input type="text" class="form-control" value="日本" required />
+                    </div>
+                    <div class="form-group col-lg-8">
+                      <label>ローマ字表記<a href="#" data-toggle="modal"
+                          data-target=".english_name_modal">（サンプル）</a></label><span
+                        class="sometimes_required">日本以外は必須</span>
+                      <div class="modal fade english_name_modal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">サンプル</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p>こちらはサンプルです</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <input type="text" class="form-control" required placeholder="ローマ字表記" />
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="form-group col-lg-6 datepicker">
+                      <label>生年月日<span class="star">*</span><a href="#" data-toggle="modal"
+                          data-target=".birthday_modal">（和暦入力）</a></label><span class="required">必須</span>
+                      <div class="modal fade birthday_modal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">西暦生年月日</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="d-flex">
+                                <div class="item ml-2">
+                                  <select name="jp_year">
+                                    <option value="明治">明治</option>
+                                    <option value="大正">大正</option>
+                                    <option value="昭和">昭和</option>
+                                    <option value="平成">平成</option>
+                                    <option value="令和">令和</option>
+                                  </select>
+                                </div>
+                                <div class="item ml-2">
+                                  <select name="year">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                    <option value="32">32</option>
+                                    <option value="33">33</option>
+                                    <option value="34">34</option>
+                                    <option value="35">35</option>
+                                    <option value="36">36</option>
+                                    <option value="36">36</option>
+                                    <option value="37">37</option>
+                                    <option value="38">38</option>
+                                    <option value="39">39</option>
+                                    <option value="40">40</option>
+                                    <option value="41">41</option>
+                                    <option value="42">42</option>
+                                    <option value="43">43</option>
+                                    <option value="44">44</option>
+                                    <option value="45">45</option>
+                                    <option value="46">46</option>
+                                    <option value="47">47</option>
+                                    <option value="48">48</option>
+                                    <option value="49">49</option>
+                                    <option value="50">50</option>
+                                    <option value="51">51</option>
+                                    <option value="52">52</option>
+                                    <option value="53">53</option>
+                                    <option value="54">54</option>
+                                    <option value="55">55</option>
+                                    <option value="56">56</option>
+                                    <option value="57">57</option>
+                                    <option value="58">58</option>
+                                    <option value="59">59</option>
+                                    <option value="60">60</option>
+                                    <option value="61">61</option>
+                                    <option value="62">62</option>
+                                    <option value="63">63</option>
+                                    <option value="64">64</option>
+                                    <option value="65">65</option>
+                                  </select><span class="marker">年</span>
+                                </div>
+                                <div class="item ml-2">
+                                  <select name="month">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                  </select><span class="marker">月</span>
+                                </div>
+                                <div class="item ml-2">
+                                  <select name="day">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                  </select><span class="marker">日</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-primary" data-dismiss="modal">設定</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <input type="text" id="datepicker" name="datepicker" placeholder="日付を選択してください"
+                        class="form-control" required />
+                    </div>
+                    <div class="form-group col-lg-6">
+                      <label>性別<span class="star">*</span></label><span class="required">必須</span>
+                      <div>
+                        <div class="form-check-inline my-1">
+                          <label class="cr-styled" for="example-radio4">
+                            <input type="radio" id="example-radio4" name="example-radios1" value="option1" checked>
+                            <i class="fa"></i>男性
+                          </label>
+                        </div>
+                        <div class="form-check-inline my-1">
+                          <label class="cr-styled" for="example-radio5">
+                            <input type="radio" id="example-radio5" name="example-radios1" value="option2">
+                            <i class="fa"></i>女性
+                          </label>
+                        </div>
+                        <div class="form-check-inline my-1">
+                          <label class="cr-styled" for="example-radio6">
+                            <input type="radio" id="example-radio6" name="example-radios1" value="option3">
+                            <i class="fa"></i>その他
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-lg-4">
+                      <div class="top_section"><label>郵便番号<span class="star">*</span></label><span
+                          class="required">必須</span></div>
+                      <div class="d-flex justify-content-between align-items-center"><input type="text"
+                          class="form-control post_number" required placeholder="郵便番号" /><a href="#">住所へ反映</a></div>
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label>都道府県<span class="star">*</span></label><span class="required">必須</span>
+                      <select class="form-control" name="" id="">
+                        <option value="0">なし(海外など)</option>
+                        <option value="1">北海道</option>
+                        <option value="2">青森県</option>
+                        <option value="3">岩手県</option>
+                        <option value="4">宮城県</option>
+                        <option value="5">秋田県</option>
+                        <option value="6">山形県</option>
+                        <option value="7">福島県</option>
+                        <option value="8">茨城県</option>
+                        <option value="9">栃木県</option>
+                        <option value="10">群馬県</option>
+                        <option value="11">埼玉県</option>
+                        <option value="12">千葉県</option>
+                        <option value="13">東京都</option>
+                        <option value="14">神奈川県</option>
+                        <option value="15">新潟県</option>
+                        <option value="16">富山県</option>
+                        <option value="17">石川県</option>
+                        <option value="18">福井県</option>
+                        <option value="19">山梨県</option>
+                        <option value="20">長野県</option>
+                        <option value="21">岐阜県</option>
+                        <option value="22">静岡県</option>
+                        <option value="23">愛知県</option>
+                        <option value="24">三重県</option>
+                        <option value="25">滋賀県</option>
+                        <option value="26">京都府</option>
+                        <option value="27">大阪府</option>
+                        <option value="28">兵庫県</option>
+                        <option value="29">奈良県</option>
+                        <option value="30">和歌山県</option>
+                        <option value="31">鳥取県</option>
+                        <option value="32">島根県</option>
+                        <option value="33">岡山県</option>
+                        <option value="34">広島県</option>
+                        <option value="35" selected>山口県</option>
+                        <option value="36">徳島県</option>
+                        <option value="37">香川県</option>
+                        <option value="38">愛媛県</option>
+                        <option value="39">高知県</option>
+                        <option value="40">福岡県</option>
+                        <option value="41">佐賀県</option>
+                        <option value="42">長崎県</option>
+                        <option value="43">熊本県</option>
+                        <option value="44">大分県</option>
+                        <option value="45">宮崎県</option>
+                        <option value="46">鹿児島県</option>
+                        <option value="47">沖縄県</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label>電話番号<span class="star">*</span></label><span class="required">必須</span>
+                      <input type="text" class="form-control" required placeholder="電話番号" />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-lg-8">
+                      <label>住所<span class="star">*</span><a href="#" data-toggle="modal"
+                          data-target=".address_modal">（サンプル）</a></label><span class="required">必須</span>
+                      <div class="modal fade address_modal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">サンプル</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p>こちらはサンプルです</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <input type="text" class="form-control" required placeholder="住所" />
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label>備考</label><span class="general">任意</span>
+                      <input type="text" class="form-control" placeholder="備考" data-parsley-id="47">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="form-group col-lg-4">
+                      <div class="top_section"><label>郵便番号(2)</label><span class="general">任意</span></div>
+                      <div class="d-flex justify-content-between align-items-center"><input type="text"
+                          class="form-control post_number" required placeholder="郵便番号(2)" /><a href="#">住所へ反映</a></div>
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label>都道府県(2)</label><span class="general">任意</span>
+                      <select class="form-control" name="" id="">
+                        <option value="0">なし(海外など)</option>
+                        <option value="1">北海道</option>
+                        <option value="2">青森県</option>
+                        <option value="3">岩手県</option>
+                        <option value="4">宮城県</option>
+                        <option value="5">秋田県</option>
+                        <option value="6">山形県</option>
+                        <option value="7">福島県</option>
+                        <option value="8">茨城県</option>
+                        <option value="9">栃木県</option>
+                        <option value="10">群馬県</option>
+                        <option value="11">埼玉県</option>
+                        <option value="12">千葉県</option>
+                        <option value="13">東京都</option>
+                        <option value="14">神奈川県</option>
+                        <option value="15">新潟県</option>
+                        <option value="16">富山県</option>
+                        <option value="17">石川県</option>
+                        <option value="18">福井県</option>
+                        <option value="19">山梨県</option>
+                        <option value="20">長野県</option>
+                        <option value="21">岐阜県</option>
+                        <option value="22">静岡県</option>
+                        <option value="23">愛知県</option>
+                        <option value="24">三重県</option>
+                        <option value="25">滋賀県</option>
+                        <option value="26">京都府</option>
+                        <option value="27">大阪府</option>
+                        <option value="28">兵庫県</option>
+                        <option value="29">奈良県</option>
+                        <option value="30">和歌山県</option>
+                        <option value="31">鳥取県</option>
+                        <option value="32">島根県</option>
+                        <option value="33">岡山県</option>
+                        <option value="34">広島県</option>
+                        <option value="35" selected>山口県</option>
+                        <option value="36">徳島県</option>
+                        <option value="37">香川県</option>
+                        <option value="38">愛媛県</option>
+                        <option value="39">高知県</option>
+                        <option value="40">福岡県</option>
+                        <option value="41">佐賀県</option>
+                        <option value="42">長崎県</option>
+                        <option value="43">熊本県</option>
+                        <option value="44">大分県</option>
+                        <option value="45">宮崎県</option>
+                        <option value="46">鹿児島県</option>
+                        <option value="47">沖縄県</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label>電話番号(2)</label><span class="general">任意</span>
+                      <input type="text" class="form-control" placeholder="電話番号(2)" />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-lg-8">
+                      <label>住所(2)<a href="#" data-toggle="modal" data-target=".address_modal02">（サンプル）</a></label><span
+                        class="general">任意</span>
+                      <div class="modal fade address_modal02" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">サンプル</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p>こちらはサンプルです</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <input type="text" class="form-control" placeholder="住所(2)" />
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label>備考</label><span class="general">任意</span>
+                      <input type="text" class="form-control" placeholder="備考" data-parsley-id="47">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="form-group col-lg-4">
+                      <div class="top_section"><label>郵便番号(3)</label><span class="general">任意</span></div>
+                      <div class="d-flex justify-content-between align-items-center"><input type="text"
+                          class="form-control post_number" required placeholder="郵便番号(3)" /><a href="#">住所へ反映</a></div>
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label>都道府県(3)</label><span class="general">任意</span>
+                      <select class="form-control" name="" id="">
+                        <option value="0">なし(海外など)</option>
+                        <option value="1">北海道</option>
+                        <option value="2">青森県</option>
+                        <option value="3">岩手県</option>
+                        <option value="4">宮城県</option>
+                        <option value="5">秋田県</option>
+                        <option value="6">山形県</option>
+                        <option value="7">福島県</option>
+                        <option value="8">茨城県</option>
+                        <option value="9">栃木県</option>
+                        <option value="10">群馬県</option>
+                        <option value="11">埼玉県</option>
+                        <option value="12">千葉県</option>
+                        <option value="13">東京都</option>
+                        <option value="14">神奈川県</option>
+                        <option value="15">新潟県</option>
+                        <option value="16">富山県</option>
+                        <option value="17">石川県</option>
+                        <option value="18">福井県</option>
+                        <option value="19">山梨県</option>
+                        <option value="20">長野県</option>
+                        <option value="21">岐阜県</option>
+                        <option value="22">静岡県</option>
+                        <option value="23">愛知県</option>
+                        <option value="24">三重県</option>
+                        <option value="25">滋賀県</option>
+                        <option value="26">京都府</option>
+                        <option value="27">大阪府</option>
+                        <option value="28">兵庫県</option>
+                        <option value="29">奈良県</option>
+                        <option value="30">和歌山県</option>
+                        <option value="31">鳥取県</option>
+                        <option value="32">島根県</option>
+                        <option value="33">岡山県</option>
+                        <option value="34">広島県</option>
+                        <option value="35" selected>山口県</option>
+                        <option value="36">徳島県</option>
+                        <option value="37">香川県</option>
+                        <option value="38">愛媛県</option>
+                        <option value="39">高知県</option>
+                        <option value="40">福岡県</option>
+                        <option value="41">佐賀県</option>
+                        <option value="42">長崎県</option>
+                        <option value="43">熊本県</option>
+                        <option value="44">大分県</option>
+                        <option value="45">宮崎県</option>
+                        <option value="46">鹿児島県</option>
+                        <option value="47">沖縄県</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label>電話番号(3)</label><span class="general">任意</span>
+                      <input type="text" class="form-control" placeholder="電話番号(3)" />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-lg-8">
+                      <label>住所(3)<a href="#" data-toggle="modal" data-target=".address_modal03">（サンプル）</a></label><span
+                        class="general">任意</span>
+                      <div class="modal fade address_modal03" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">サンプル</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p>こちらはサンプルです</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <input type="text" class="form-control" placeholder="住所(3)" />
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label>備考</label><span class="general">任意</span>
+                      <input type="text" class="form-control" placeholder="備考" data-parsley-id="47">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="form-group">
+                    <label>携帯電話</label><span class="general">任意</span>
+                    <input type="text" class="form-control" placeholder="携帯電話" />
+                  </div>
+                  <div class="form-group">
+                    <label>メールアドレス</label><span class="general">任意</span>
+                    <input type="text" class="form-control" placeholder="メールアドレス" />
+                  </div>
+                  <div class="form-group">
+                    <label>医療保険</label><span class="general">任意</span>
+                    <input type="text" class="form-control" placeholder="医療保険" />
+                  </div>
+                  <div class="form-group">
+                    <label>介護保険</label><span class="general">任意</span>
+                    <input type="text" class="form-control" placeholder="介護保険" />
+                  </div>
+                  <div class="form-group">
+                    <label>wiseman介護のID</label><span class="sometimes_required">介護利用の場合は必須</span>
+                    <input type="text" class="form-control" placeholder="wiseman介護のID" />
+                  </div>
+                  <div class="form-group">
+                    <label>死亡日</label><span class="general">任意</span>
+                    <input type="text" class="form-control" placeholder="死亡日" />
+                  </div>
+                  <div class="form-group">
+                    <label>備考</label><span class="general">任意</span>
+                    <textarea type="text" class="form-control" placeholder="備考"></textarea>
+                  </div>
+                  <div class="form-group mb-0 mt-3">
+                    <div>
+                      <button data-toggle="modal" data-target=".regist_confirm_modal" type="button"
+                        class="btn btn-info waves-effect waves-light">登録</button>
+                      <div class="modal fade bd-example-modal-lg regist_confirm_modal" tabindex="-1" role="dialog"
+                        aria-labelledby="myLargeModalLabel">
+                        <div class="modal-dialog modal-lg regist_modal_lg">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">似ている利用者がすでに登録されています。 重複登録ではありませんか?</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="data-table">
+                                <div class="row">
+                                  <div id="datatable_wrapper"
+                                    class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+                                    <div class="row">
+                                      <div class="col-sm-12">
+                                        <table id="datatable" class="table table-bordered dataTable no-footer"
+                                          role="grid" aria-describedby="datatable_info">
+                                          <thead>
+                                            <tr role="row">
+                                              <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
+                                                colspan="1" aria-label="">ランク</th>
+                                              <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
+                                                colspan="1" aria-label="">ハートID</th>
+                                              <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
+                                                colspan="1" aria-label="">氏名</th>
+                                              <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
+                                                colspan="1" aria-label="">性別</th>
+                                              <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
+                                                colspan="1" aria-label="">生年月日</th>
+                                              <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
+                                                colspan="1" aria-label="">電話番号</th>
+                                              <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
+                                                colspan="1" aria-label="">詳細</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr role="row" class="odd">
+                                              <td class="sorting_1">A</td>
+                                              <td>10000<a class="ml-2" href="javascript:;"
+                                                  onclick="$.Notification.autoHideNotify('success','top center', '', 'ハートIDをコピーしました。')"><i
+                                                    class="mdi mdi-content-copy" style="font-size: 20px;"></i></a></td>
+                                              <td>山田 太郎</td>
+                                              <td>男性</td>
+                                              <td>1952/5/4(72歳)</td>
+                                              <td>090-1111-2222<br>03-1111-2222<br>045-1111-2222</td>
+                                              <td>
+                                                <a href="#" data-toggle="modal" data-target=".user_info_modal_sub_modal"
+                                                  class="">詳細</a>
+                                              </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                              <td class="sorting_1">A</td>
+                                              <td>10001<a class="ml-2" href="javascript:;"
+                                                  onclick="$.Notification.autoHideNotify('success','top center', '', 'ハートIDをコピーしました。')"><i
+                                                    class="mdi mdi-content-copy" style="font-size: 20px;"></i></a></td>
+                                              <td>山田 太郎</td>
+                                              <td>男性</td>
+                                              <td>1952/5/4(72歳)</td>
+                                              <td>090-1111-2222</td>
+                                              <td>
+                                                <a href="#" data-toggle="modal" data-target=".user_info_modal_sub_modal"
+                                                  class="">詳細</a>
+
+                                              </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                              <td class="sorting_1">B</td>
+                                              <td>10002<a class="ml-2" href="javascript:;"
+                                                  onclick="$.Notification.autoHideNotify('success','top center', '', 'ハートIDをコピーしました。')"><i
+                                                    class="mdi mdi-content-copy" style="font-size: 20px;"></i></a></td>
+                                              <td>山田 太郎</td>
+                                              <td>男性</td>
+                                              <td>1952/5/4(72歳)</td>
+                                              <td>090-1111-2222</td>
+                                              <td>
+                                                <a href="#" data-toggle="modal" data-target=".user_info_modal_sub_modal"
+                                                  class="">詳細</a>
+
+                                              </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                              <td class="sorting_1">B</td>
+                                              <td>10003<a class="ml-2" href="javascript:;"
+                                                  onclick="$.Notification.autoHideNotify('success','top center', '', 'ハートIDをコピーしました。')"><i
+                                                    class="mdi mdi-content-copy" style="font-size: 20px;"></i></a></td>
+                                              <td>山田 太郎</td>
+                                              <td>男性</td>
+                                              <td>1952/5/4(72歳)</td>
+                                              <td>090-1111-2222</td>
+                                              <td>
+                                                <a href="#" data-toggle="modal" data-target=".user_info_modal_sub_modal"
+                                                  class="">詳細</a>
+
+                                              </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                              <td class="sorting_1">
+                                                B
+                                              </td>
+                                              <td>10004<a class="ml-2" href="javascript:;"
+                                                  onclick="$.Notification.autoHideNotify('success','top center', '', 'ハートIDをコピーしました。')"><i
+                                                    class="mdi mdi-content-copy" style="font-size: 20px;"></i></a></td>
+                                              <td>山田 太郎</td>
+                                              <td>男性</td>
+                                              <td>1952/5/4(72歳)</td>
+                                              <td>090-1111-2222</td>
+                                              <td>
+                                                <a href="#" data-toggle="modal" data-target=".user_info_modal_sub_modal"
+                                                  class="">詳細</a>
+
+                                              </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                              <td class="sorting_1">C</td>
+                                              <td>10005<a class="ml-2" href="javascript:;"
+                                                  onclick="$.Notification.autoHideNotify('success','top center', '', 'ハートIDをコピーしました。')"><i
+                                                    class="mdi mdi-content-copy" style="font-size: 20px;"></i></a></td>
+                                              <td>山田 太郎</td>
+                                              <td>男性</td>
+                                              <td>1952/5/4(72歳)</td>
+                                              <td>090-1111-2222</td>
+                                              <td>
+                                                <a href="#" data-toggle="modal" data-target=".user_info_modal_sub_modal"
+                                                  class="">詳細</a>
+
+                                              </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                              <td class="sorting_1">A</td>
+                                              <td>10006<a class="ml-2" href="javascript:;"
+                                                  onclick="$.Notification.autoHideNotify('success','top center', '', 'ハートIDをコピーしました。')"><i
+                                                    class="mdi mdi-content-copy" style="font-size: 20px;"></i></a></td>
+                                              <td>山田 太郎</td>
+                                              <td>男性</td>
+                                              <td>1952/5/4(72歳)</td>
+                                              <td>090-1111-2222<br>03-1111-2222<br>045-1111-2222</td>
+                                              <td>
+                                                <a href="#" data-toggle="modal" data-target=".user_info_modal_sub_modal"
+                                                  class="">詳細</a>
+
+                                              </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                              <td class="sorting_1">A</td>
+                                              <td>10007<a class="ml-2" href="javascript:;"
+                                                  onclick="$.Notification.autoHideNotify('success','top center', '', 'ハートIDをコピーしました。')"><i
+                                                    class="mdi mdi-content-copy" style="font-size: 20px;"></i></a></td>
+                                              <td>山田 太郎</td>
+                                              <td>男性</td>
+                                              <td>1952/5/4(72歳)</td>
+                                              <td>090-1111-2222</td>
+                                              <td>
+                                                <a href="#" data-toggle="modal" data-target=".user_info_modal_sub_modal"
+                                                  class="">詳細</a>
+
+                                              </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                              <td class="sorting_1">B</td>
+                                              <td>10008<a class="ml-2" href="javascript:;"
+                                                  onclick="$.Notification.autoHideNotify('success','top center', '', 'ハートIDをコピーしました。')"><i
+                                                    class="mdi mdi-content-copy" style="font-size: 20px;"></i></a></td>
+                                              <td>山田 太郎</td>
+                                              <td>男性</td>
+                                              <td>1952/5/4(72歳)</td>
+                                              <td>090-1111-2222</td>
+                                              <td>
+                                                <a href="#" data-toggle="modal" data-target=".user_info_modal_sub_modal"
+                                                  class="">詳細</a>
+
+                                              </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                              <td class="sorting_1">B</td>
+                                              <td>10009<a class="ml-2" href="javascript:;"
+                                                  onclick="$.Notification.autoHideNotify('success','top center', '', 'ハートIDをコピーしました。')"><i
+                                                    class="mdi mdi-content-copy" style="font-size: 20px;"></i></a></td>
+                                              <td>山田 太郎</td>
+                                              <td>男性</td>
+                                              <td>1952/5/4(72歳)</td>
+                                              <td>090-1111-2222</td>
+                                              <td>
+                                                <a href="#" data-toggle="modal" data-target=".user_info_modal_sub_modal"
+                                                  class="">詳細</a>
+
+                                              </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                              <td class="sorting_1">
+                                                B
+                                              </td>
+                                              <td>10010<a class="ml-2" href="javascript:;"
+                                                  onclick="$.Notification.autoHideNotify('success','top center', '', 'ハートIDをコピーしました。')"><i
+                                                    class="mdi mdi-content-copy" style="font-size: 20px;"></i></a></td>
+                                              <td>山田 太郎</td>
+                                              <td>男性</td>
+                                              <td>1952/5/4(72歳)</td>
+                                              <td>090-1111-2222</td>
+                                              <td>
+                                                <a href="#" data-toggle="modal" data-target=".user_info_modal_sub_modal"
+                                                  class="">詳細</a>
+
+                                              </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                              <td class="sorting_1">C</td>
+                                              <td>10011<a class="ml-2" href="javascript:;"
+                                                  onclick="$.Notification.autoHideNotify('success','top center', '', 'ハートIDをコピーしました。')"><i
+                                                    class="mdi mdi-content-copy" style="font-size: 20px;"></i></a></td>
+                                              <td>山田 太郎</td>
+                                              <td>男性</td>
+                                              <td>1952/5/4(72歳)</td>
+                                              <td>090-1111-2222</td>
+                                              <td>
+                                                <a href="#" data-toggle="modal" data-target=".user_info_modal_sub_modal"
+                                                  class="">詳細</a>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!--end row-->
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <label class="cr-styled ml-0 ml-lg-3 mt-2 mt-lg-0"><input type="checkbox"><i
+                                  class="fa"></i>重複登録ではないと確認しました</label>
+                              <button type="button" class="btn btn-danger">登録</button>
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">登録をやめる</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button type="reset" class="btn btn-secondary waves-effect m-l-5">キャンセル</button>
+                    </div>
+                  </div>
+                  <div class="user_info_modal user_info_modal_sub_modal modal fade" tabindex="-1" role="dialog"
+                    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- end col -->
+        </div>
+        <h3 class="text-muted pl-3 mt-3 mb-3 text-center">利用施設情報</h3>
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="card m-b-30">
+              <div class="card-body">
+                <h6 class="mb-2 mt-2">利用サービス</h6>
+                <form class="" action="">
+                  <div class="tab-7 m-b-30">
+                    <ul class="nav flex-column">
+                      <li class="nav-item">
+                        <a class="nav-link active show" href="#profile-1" data-toggle="tab" aria-expanded="false">医療</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link " href="#profile-2" data-toggle="tab" aria-expanded="false">在宅支援</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#about-2" data-toggle="tab" aria-expanded="false">介護</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#contact-2" data-toggle="tab" aria-expanded="false">子育て</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#contact-3" data-toggle="tab" aria-expanded="false">障がい</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#contact-4" data-toggle="tab" aria-expanded="false">教育</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#contact-5" data-toggle="tab" aria-expanded="false">ダミー項目</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#contact-6" data-toggle="tab" aria-expanded="false">ダミー項目</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#contact-7" data-toggle="tab" aria-expanded="false">ダミー項目</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#contact-8" data-toggle="tab" aria-expanded="false">ダミー項目</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content bg-eee">
+                      <div class="tab-pane p-4 active show" id="profile-1">
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>医療A</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>医療B</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>医療C</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>医療D</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>医療E</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>医療F</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane p-4" id="profile-2">
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>在宅支援A</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>在宅支援B</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>在宅支援C</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>在宅支援D</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>在宅支援E</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>在宅支援F</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane p-4" id="about-2">
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>介護A</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>介護B</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>介護C</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>介護D</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>介護E</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>介護F</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane p-4" id="contact-2">
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>子育てA</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>子育てB</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>子育てC</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>子育てD</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>子育てE</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>子育てF</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane p-4" id="contact-3">
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>障がいA</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>障がいB</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>障がいC</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>障がいD</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>障がいE</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>障がいF</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane p-4" id="contact-4">
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>教育A</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>教育B</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>教育C</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>教育D</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>教育E</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>教育F</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane p-4" id="contact-5">
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目A</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目B</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目C</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目D</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目E</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目F</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane p-4" id="contact-6">
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目A</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目B</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目C</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目D</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目E</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目F</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane p-4" id="contact-7">
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目A</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目B</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目C</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目D</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目E</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目F</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane p-4" id="contact-8">
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目A</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目B</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目C</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目D</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目E</label>
+                          </div>
+                          <div class="col-lg-4 checkbox my-2">
+                            <label class="cr-styled"><input type="checkbox"><i class="fa"></i>ダミー項目F</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-0 mt-3">
+                    <div>
+                      <button type="submit" class="btn btn-info waves-effect waves-light">登録</button>
+                      <button type="reset" class="btn btn-secondary waves-effect m-l-5">キャンセル</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- end col -->
+        </div>
+      </div>
+      <!--end container-->
+      <!--footer section start-->
+      <footer class="footer">
+        2022 &copy; ハートID
+      </footer>
+      <!--footer section end-->
+    </div>
+    <!--end body content-->
+  </section>
+
+  <!-- jQuery -->
+  <script src="assets/js/jquery-3.2.1.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery-migrate.js"></script>
+  <script src="assets/js/modernizr.min.js"></script>
+  <script src="assets/js/jquery.slimscroll.min.js"></script>
+  <script src="assets/js/slidebars.min.js"></script>
+
+  <!-- Parsley js -->
+  <script type="text/javascript" src="assets/plugins/parsleyjs/dist/parsley.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('form').parsley();
+    });
+  </script>
+  <!--Notifications-->
+  <script src="assets/plugins/notifications/notify.min.js"></script>
+  <script src="assets/plugins/notifications/notify-metro.js"></script>
+  <script src="assets/plugins/notifications/notifications.js"></script>
+
+  <!--app js-->
+  <script src="assets/js/jquery.app.js"></script>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+  <script>
+    $(function () {
+      $("#datepicker").datepicker({
+        prevText: "前月",
+        nextText: "次月",
+        monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        monthNamesShort: ["１月", "２月", "３月", "４月", "５月", "６月", "７月", "８月", "９月", "１０月", "１１月", "１２月"],
+        dayNames: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+        dayNamesShort: ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"],
+        dayNamesMin: ["日", "月", "火", "水", "木", "金", "土"],
+        weekHeader: "周",
+        showWeek: false,
+        dateFormat: "yy年mm月dd日",
+        firstDay: 0 /* 週の開始を日曜にする */,
+        isRTL: false,
+        showMonthAfterYear: true,
+        yearSuffix: "年",
+        showButtonPanel: true,
+        closeText: "閉じる",
+        currentText: "今日"
+      });
+    });
+  </script>
+  <!-- Responsive and datatable js -->
+  <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="assets/plugins/datatables/dataTables.responsive.min.js"></script>
+  <script src="assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+  <!--app js-->
+  <!-- Sweet Alert Js  -->
+  <script src="assets/plugins/sweet-alert/sweetalert2.min.js"></script>
+  <script src="assets/pages/jquery.sweet-alert.init.js"></script>
+  <script src="assets/js/jquery.app.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#datatable').DataTable(
+        {
+          "aLengthMenu": [
+            [6, -1],
+            [6, "All"]
+          ],
+          "iDisplayLength": 6,
+        }
+      );
+    });
+  </script>
+</body>
+
+</html>
