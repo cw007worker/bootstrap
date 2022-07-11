@@ -1,1 +1,0 @@
-# seiran-tablet-mock
